@@ -7,5 +7,20 @@
       "sourceMap": true,
       "outDir": "dist"
     },
-    "lib": ["es2015"]
+    "lib": ["es2015"],
+    "paths": {
+      "*": [
+        "node_modules/",
+      ],
+      "typings/*": [
+        "src/typings/*"
+      ]
+    },
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "src/test/**/*.spec.ts"
+  ]
   }
