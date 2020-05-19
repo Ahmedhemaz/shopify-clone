@@ -1,12 +1,10 @@
 import express from 'express';
 import 'reflect-metadata';
-import { DBHandler } from './Infrastructrue/DB/DBHandler'
-import './Infrastructrue/environment'
+import { DBHandler } from './infrastructrue/DB/DBHandler'
+import './infrastructrue/environment'
 
-const dbConnection = (new DBHandler()).getDbConnection();
-dbConnection.then(dbConnection=> {
-  console.log(`Connected To Database ${dbConnection.isConnected}`);
-});
+// Connect to database while bootstraping the application
+(new DBHandler()).getDbConnection();
 
 const app = express();
 const port = 3000;

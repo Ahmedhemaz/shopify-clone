@@ -1,0 +1,12 @@
+{
+    "type": "databasetype",
+    "host": "host",
+    "port": "portNumber",
+    "username": "username",
+    "password": "password",
+    "database": "database",
+    "migrations": ["Migrations Dirs to be executed"],
+    "cli": {
+        "migrationsDir": "Migration dir path "
+    }
+}
