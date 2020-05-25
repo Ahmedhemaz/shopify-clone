@@ -13,10 +13,11 @@ services:
             dockerfile: Dockerfile.dev
             context: ./
         volumes: 
-            - /app/node_modules
-            - /app/dist 
-            - /app/coverage
-            - ./src:/app 
+            - ./nodemon.json:/usr/app/nodemon.json
+            - ./src/:/usr/app/src/
+            - /usr/app/node_modules
+            - /usr/app/dist 
+            - /usr/app/coverage
         env_file: 
             - ./src/.env.development
         environment:
@@ -27,6 +28,7 @@ services:
             - "3000"
         ports: 
             - "3000:3000"
+            - "9229:9229"
         links: 
             - db
 
