@@ -4,7 +4,7 @@ export class DBHandler {
 
     constructor(){}
 
-    public async  getDbConnection(){
+    public  getDbConnection(){
         createConnection({
             type: 'mysql',
             host: process.env.HOST,
@@ -17,6 +17,6 @@ export class DBHandler {
             }
         }).then(dbConnection=> {
             console.log(`Is Database Connected ? ${dbConnection.isConnected}`);
-          })
+        }).catch(error => console.log(error))
     }
 }

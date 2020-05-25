@@ -1,0 +1,32 @@
+version: '3'
+services: 
+    db:
+        image:  mysql:latest
+        expose: 
+            - "3306"
+        ports:
+            - "3307:3306"
+        env_file: 
+            - ./src/.env.development
+    api:
+        build: 
+            dockerfile: Dockerfile.dev
+            context: ./
+        volumes: 
+            - /app/node_modules
+            - /app/dist 
+            - /app/coverage
+            - ./src:/app 
+        env_file: 
+            - ./src/.env.development
+        environment:
+            - NODE_ENV=development
+        depends_on: 
+            - db
+        expose: 
+            - "3000"
+        ports: 
+            - "3000:3000"
+        links: 
+            - db
+
