@@ -1,11 +1,11 @@
-import { createConnection, Connection } from 'typeorm';
+import { IConnection } from "../IConnection";
+import { Connection } from "typeorm";
 
-export class DBHandler {
-
-    constructor(){}
-
-    public  getDbConnection(){
-        createConnection({
+export class DbConnectionData implements IConnection{
+    
+    private readonly connectionData: any;
+    constructor(){
+        this.connectionData = {
             type: 'mysql',
             host: process.env.HOST,
             port: +process.env.PORT,
@@ -15,8 +15,10 @@ export class DBHandler {
             cli: {
                 migrationsDir: process.env.MIGRATIONS_DIR
             }
-        }).then(dbConnection=> {
-            console.log(`Is Database Connected ? ${dbConnection.isConnected}`);
-        }).catch(error => console.log(error))
+        }
+    };
+
+    public getConnectionData(): Connection {
+        return this.connectionData;
     }
 }
