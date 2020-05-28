@@ -9,14 +9,15 @@ services:
         env_file: 
             - ./src/.env.development
         volumes: 
-            - ./db_data:/var/lib/mysql
+            - db_data:/var/lib/mysql
+        container_name: shopify-clone-db
     api:
         build: 
             dockerfile: Dockerfile.dev
             context: ./
         volumes: 
             - ./nodemon.json:/usr/app/nodemon.json
-            - ./src/:/usr/app/src/
+            - ./:/usr/app/src/
             - /usr/app/node_modules
             - /usr/app/dist 
             - /usr/app/coverage
@@ -33,4 +34,6 @@ services:
             - "9229:9229"
         links: 
             - db
-
+        container_name: shopify-clone-api
+volumes: 
+    db_data: {}

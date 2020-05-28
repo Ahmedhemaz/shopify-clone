@@ -2,5 +2,7 @@ FROM node:alpine
 WORKDIR /usr/app
 COPY package.json .
 RUN npm install
+RUN npm install -g typeorm
 COPY . .
-CMD ["npm", "start"]
+RUN ["chmod", "+x", "./entrypoint.sh"]
+ENTRYPOINT ["sh","./entrypoint.sh"]

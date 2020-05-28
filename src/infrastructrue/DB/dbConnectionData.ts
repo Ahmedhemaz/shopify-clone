@@ -12,9 +12,6 @@ export class DbConnectionData implements IConnection{
             username: process.env.USERNAME,
             password: process.env.PASSWORD,
             database: process.env.DATABASENAME,
-            cli: {
-                migrationsDir: process.env.MIGRATIONS_DIR
-            }
         }
     };
 
