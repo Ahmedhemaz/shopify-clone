@@ -3,23 +3,40 @@ import { ConnectionsFactory } from '../connectionsFactory';
 
 export class DBHandler {
 
-    private readonly dbConnection: any;
+    private readonly dbConnectionConfigurations: any;
     private readonly connectionsFactory: ConnectionsFactory;
+    private  dbConnectionObject: Connection;
     constructor(){
         this.connectionsFactory = new ConnectionsFactory();
-        this.dbConnection = this.connectionsFactory.getConnectionObject(DBHandler.name).getConnectionData();
+        this.dbConnectionConfigurations = this.connectionsFactory
+                                          .getConnectionObject(DBHandler.name)
+                                          .getConnectionOptions();
     }
 
-    public  connect(){        
-        createConnection(this.dbConnection).then(dbConnection => {
-            console.log(`Is Database Connected ? ${dbConnection.isConnected}`);
-        }).catch(error => console.log(error))
+    public async connect(){        
+        try {
+            this.dbConnectionObject = await createConnection(this.dbConnectionConfigurations);
+            console.log(`Is Database Connected? ${this.dbConnectionObject.isConnected}`);
+        } catch (error) {
+            console.log(error.message);
+        }
     }
 
-    public disconnect(){
-        this.dbConnection.close()
-        .then(() => console.log(`Database Connection has been closed successfully`))
-        .catch(error => console.log(error));
+    public async disconnect(){
+        try {
+            this.dbConnectionObject.close();
+            console.log(`Database Connection has been closed successfully`);
+        } catch (error) {
+            console.log(error.message);   
+        }
+    }
+
+    public getDbConnectionObject(): Readonly<Connection>{
+        return this.dbConnectionObject;
+    }
+
+    public isDatabaseConnected(): boolean {
+        return this.dbConnectionObject.isConnected;
     }
 
 }

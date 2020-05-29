@@ -17,7 +17,7 @@ services:
             context: ./
         volumes: 
             - ./nodemon.json:/usr/app/nodemon.json
-            - ./:/usr/app/src/
+            - ./:/usr/app/
             - /usr/app/node_modules
             - /usr/app/dist 
             - /usr/app/coverage

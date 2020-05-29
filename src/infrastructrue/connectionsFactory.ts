@@ -1,6 +1,6 @@
 import { IConnection } from './IConnection';
 import { DBHandler } from './DB/dbHandler';
-import { DbConnectionData } from './DB/dbConnectionData';
+import { DbConnectionOptions } from './DB/dbConnectionOptions';
 export class ConnectionsFactory{
 
     private connectionsMap:Map<string, IConnection>;
@@ -14,6 +14,6 @@ export class ConnectionsFactory{
     }
 
     private setConnectionsMap(){
-        this.connectionsMap.set(DBHandler.name, new DbConnectionData())
+        this.connectionsMap.set(DBHandler.name, new DbConnectionOptions())
     }
 }

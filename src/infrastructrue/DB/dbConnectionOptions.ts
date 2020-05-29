@@ -1,11 +1,10 @@
 import { IConnection } from "../IConnection";
-import { Connection } from "typeorm";
 
-export class DbConnectionData implements IConnection{
+export class DbConnectionOptions implements IConnection{
     
-    private readonly connectionData: any;
+    private readonly connectionOptions: any;
     constructor(){
-        this.connectionData = {
+        this.connectionOptions = {
             type: 'mysql',
             host: process.env.HOST,
             port: +process.env.PORT,
@@ -15,7 +14,7 @@ export class DbConnectionData implements IConnection{
         }
     };
 
-    public getConnectionData(): Connection {
-        return this.connectionData;
+    public getConnectionOptions(): Readonly<any> {
+        return this.connectionOptions;
     }
 }
