@@ -3,19 +3,19 @@ import { ConnectionsFactory } from '../connectionsFactory';
 
 export class DBHandler {
 
-    private readonly dbConnectionConfigurations: any;
+    private readonly dbConnectionOptions: any;
     private readonly connectionsFactory: ConnectionsFactory;
     private  dbConnectionObject: Connection;
     constructor(){
         this.connectionsFactory = new ConnectionsFactory();
-        this.dbConnectionConfigurations = this.connectionsFactory
+        this.dbConnectionOptions = this.connectionsFactory
                                           .getConnectionObject(DBHandler.name)
                                           .getConnectionOptions();
     }
 
     public async connect(){        
         try {
-            this.dbConnectionObject = await createConnection(this.dbConnectionConfigurations);
+            this.dbConnectionObject = await createConnection(this.dbConnectionOptions);
             console.log(`Is Database Connected? ${this.dbConnectionObject.isConnected}`);
         } catch (error) {
             console.log(error.message);

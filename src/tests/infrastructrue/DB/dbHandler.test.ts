@@ -1,33 +1,39 @@
 import { DBHandler } from "../../../infrastructrue/DB/dbHandler"
-import { ConnectionObjectMock } from "./mocks/connectionObjectMock";
-import { ConnectionOptionsMock } from "./mocks/connectionOptionsMock";
+import { ConnectionObjectMock } from "./__mocks__/connectionObjectMock";
+import { ConnectionOptionsMock } from "./__mocks__/connectionOptionsMock";
+jest.mock('typeorm');
 
 describe('test dbHandler', ()=>{
     let dbHandler: DBHandler;
     let connectionOptions: ConnectionOptionsMock;
     let connection: ConnectionObjectMock;
     beforeAll(()=>{
+
         dbHandler = new DBHandler()
         connectionOptions= {
             type: 'mysql',
-            host: 'process.env.HOST',
+            host: 'Host',
             port: 1234,
-            username: 'process.env.USERNAME',
-            password: 'process.env.PASSWORD',
-            database: 'process.env.DATABASENAME',
+            username: 'ahmedtest',
+            password: 'ahmedtestbardo',
+            database: 'ahmedtestbardobardo',
         }
         connection = new ConnectionObjectMock(connectionOptions);
     })
+
+
+  beforeEach( () => {
+    require('typeorm').createConnection(connectionOptions);
+  });
 
     it('should create dbHandler', ()=>{
         expect(dbHandler).toBeInstanceOf(DBHandler);
     });
     
-    it('should call connect function', async (done) =>{
-        const dbHandlerSpy = spyOn(dbHandler, 'connect');
-        dbHandler.connect()
-        expect(dbHandler.connect).toBeCalled();
-        done();
+    it('should call connect function', async () =>{
+        await dbHandler.connect();
+        expect(dbHandler.getDbConnectionObject().isConnected).toBe(false);   
+  
     });
     
     
@@ -42,7 +48,7 @@ describe('test dbHandler', ()=>{
         const connection = new ConnectionObjectMock(connectionOptions);
         connection.isConnected = true;
         dbHandler['dbConnectionObject']=connection;
-        expect(dbHandler.isDatabaseConnected()).toBeTruthy()
+        expect(dbHandler.isDatabaseConnected()).toBe(true)
     })
     
     it('should return connectionObjectMock', () =>{
