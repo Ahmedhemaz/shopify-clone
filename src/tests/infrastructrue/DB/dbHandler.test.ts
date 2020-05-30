@@ -1,15 +1,17 @@
 import { DBHandler } from "../../../infrastructrue/DB/dbHandler"
-import { ConnectionObjectMock } from "./__mocks__/connectionObjectMock";
 import { ConnectionOptionsMock } from "./__mocks__/connectionOptionsMock";
+import { ConnectionObjectMock } from "./__mocks__/connectionObjectMock";
+import { Connection } from "typeorm";
+import { ConnectionsFactory } from "../../../infrastructrue/connectionsFactory";
 jest.mock('typeorm');
 
 describe('test dbHandler', ()=>{
     let dbHandler: DBHandler;
     let connectionOptions: ConnectionOptionsMock;
-    let connection: ConnectionObjectMock;
+    let connection: Connection;
     beforeAll(()=>{
-
-        dbHandler = new DBHandler()
+        //todo mock ConnectionsFactory
+        dbHandler = new DBHandler(new ConnectionsFactory())
         connectionOptions= {
             type: 'mysql',
             host: 'Host',
@@ -18,7 +20,7 @@ describe('test dbHandler', ()=>{
             password: 'ahmedtestbardo',
             database: 'ahmedtestbardobardo',
         }
-        connection = new ConnectionObjectMock(connectionOptions);
+        connection = require('typeorm').Connection;
     })
 
 
@@ -32,27 +34,23 @@ describe('test dbHandler', ()=>{
     
     it('should call connect function', async () =>{
         await dbHandler.connect();
-        expect(dbHandler.getDbConnectionObject().isConnected).toBe(false);   
+        expect(dbHandler.getDbConnectionObject().isConnected).toBe(true);   
   
     });
     
     
-    it('should call disconnect function', async (done) =>{
-        const dbHandlerSpy = spyOn(dbHandler, 'disconnect');
-        dbHandler.disconnect()
-        expect(dbHandler.disconnect).toBeCalled();
-        done();
+    it('should call disconnect function', async () =>{
+        dbHandler['dbConnectionObject'] = connection;        
+        await dbHandler.disconnect()
+        expect(dbHandler.getDbConnectionObject().isConnected).toBe(false);
     });
     
     it('should return true', () =>{
-        const connection = new ConnectionObjectMock(connectionOptions);
-        connection.isConnected = true;
-        dbHandler['dbConnectionObject']=connection;
+        dbHandler['dbConnectionObject']= connection;
         expect(dbHandler.isDatabaseConnected()).toBe(true)
     })
     
     it('should return connectionObjectMock', () =>{
-        connection.isConnected = true;
         dbHandler['dbConnectionObject']=connection;
         expect(dbHandler.getDbConnectionObject()).toBeInstanceOf(ConnectionObjectMock);
     })

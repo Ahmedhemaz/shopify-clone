@@ -1,8 +1,9 @@
-import { Connection } from "typeorm";
-
-export  class ConnectionObjectMock extends Connection{
-    public isConnected:boolean;
-    constructor(options){
-        super(options);
+export  class ConnectionObjectMock{
+    public isConnected: boolean;
+    public  close() {
+        this.isConnected = false
+    }
+    constructor() {
+        this.isConnected = true;
     }
 }
