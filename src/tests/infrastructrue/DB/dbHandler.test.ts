@@ -2,7 +2,7 @@ import { DBHandler } from "../../../infrastructrue/DB/dbHandler"
 import { ConnectionOptionsMock } from "./__mocks__/connectionOptionsMock";
 import { ConnectionObjectMock } from "./__mocks__/connectionObjectMock";
 import { Connection } from "typeorm";
-import { ConnectionsFactory } from "../../../infrastructrue/connectionsFactory";
+import { DbConnectionOptionsMock } from "./__mocks__/DbConnectionOptionsMock";
 jest.mock('typeorm');
 
 describe('test dbHandler', ()=>{
@@ -10,8 +10,6 @@ describe('test dbHandler', ()=>{
     let connectionOptions: ConnectionOptionsMock;
     let connection: Connection;
     beforeAll(()=>{
-        //todo mock ConnectionsFactory
-        dbHandler = new DBHandler(new ConnectionsFactory())
         connectionOptions= {
             type: 'mysql',
             host: 'Host',
@@ -20,6 +18,7 @@ describe('test dbHandler', ()=>{
             password: 'ahmedtestbardo',
             database: 'ahmedtestbardobardo',
         }
+        dbHandler = new DBHandler(new DbConnectionOptionsMock(connectionOptions))
         connection = require('typeorm').Connection;
     })
 

@@ -1,8 +1,11 @@
-import { IConnection } from "../IConnection";
+import 'reflect-metadata';
+import { injectable } from "inversify";
+import { IDbConnectionOptions } from "./interfaces/IDbConnectionOptions";
 
-export class DbConnectionOptions implements IConnection{
+@injectable()
+export class DbConnectionOptions implements IDbConnectionOptions{
     
-    private readonly connectionOptions: any;
+    readonly connectionOptions: any;
     constructor(){
         this.connectionOptions = {
             type: 'mysql',

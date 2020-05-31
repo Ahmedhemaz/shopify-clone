@@ -1,14 +1,12 @@
-import express from 'express';
 import 'reflect-metadata';
-import { DBHandler } from './infrastructrue/DB/dbHandler'
+import express from 'express';
 import './infrastructrue/environment'
-import { ConnectionsFactory } from './infrastructrue/connectionsFactory';
+import { myContainer } from './infrastructrue/ioc/inversify.config.ts';
+import { TYPES } from './infrastructrue/ioc/types';
+import { IDbHandler } from './infrastructrue/DB/interfaces/IDbHandler';
 
-// Connect to database while bootstraping the application
-(new DBHandler
-  (new ConnectionsFactory())
-).connect();
-
+const dbHandler = myContainer.get<IDbHandler>(TYPES.IDbHandler);
+dbHandler.connect();
 const app = express();
 const port = 3000;
 

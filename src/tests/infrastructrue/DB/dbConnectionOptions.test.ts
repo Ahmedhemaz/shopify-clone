@@ -1,10 +1,12 @@
 import { DbConnectionOptions } from "../../../infrastructrue/DB/dbConnectionOptions"
-
+import { myContainer } from '../../../infrastructrue/ioc/inversify.config.ts';
+import { TYPES } from '../../../infrastructrue/ioc/types';
+import { IDbConnectionOptions } from "../../../infrastructrue/DB/interfaces/IDbConnectionOptions";
 describe('dbConnectionOptions tests', ()=>{
     let dbConnectionOptions: DbConnectionOptions;
     let  mockedConnectionOptions: any;
     beforeAll(()=>{
-        dbConnectionOptions = new DbConnectionOptions();
+        dbConnectionOptions = myContainer.get<IDbConnectionOptions>(TYPES.IDbConnectionOptions);
         mockedConnectionOptions = {
             type: 'mysql',
             host: 'Host',

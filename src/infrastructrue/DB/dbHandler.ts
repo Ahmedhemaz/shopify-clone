@@ -1,17 +1,18 @@
 import { createConnection, Connection } from 'typeorm';
-import { ConnectionsFactory } from '../connectionsFactory';
-
-export class DBHandler {
-    //todo create IOC and implement with inteface 
-    private readonly dbConnectionOptions: any;
-    private readonly connectionsFactory: ConnectionsFactory;
-    private  dbConnectionObject: Connection;
-    constructor(connectionFactory: ConnectionsFactory){
-        this.connectionsFactory = connectionFactory;
-        this.dbConnectionOptions = this.connectionsFactory
-                                          .getConnectionObject(DBHandler.name)
-                                          .getConnectionOptions();
-    }
+import { inject, injectable } from 'inversify';
+import { TYPES } from '../ioc/types';
+import { IDbConnectionOptions } from './interfaces/IDbConnectionOptions';
+import { IDbHandler } from './interfaces/IDbHandler';
+@injectable()
+export class DBHandler implements IDbHandler{
+    readonly dbConnectionOptions: any;
+    dbConnectionObject: Connection;
+    constructor(
+        @inject(TYPES.IDbConnectionOptions) dbConnectionOptions:IDbConnectionOptions
+        )
+        {
+            this.dbConnectionOptions = dbConnectionOptions.getConnectionOptions();
+        }
 
     public async connect(){        
         try {
