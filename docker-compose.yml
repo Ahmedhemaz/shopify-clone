@@ -7,7 +7,7 @@ services:
         ports:
             - "3307:3306"
         env_file: 
-            - ./src/.env.development
+            - ./.env.development
         volumes: 
             - db_data:/var/lib/mysql
         container_name: shopify-clone-db
@@ -22,7 +22,7 @@ services:
             - /usr/app/dist 
             - /usr/app/coverage
         env_file: 
-            - ./src/.env.development
+            - ./.env.development
         environment:
             - NODE_ENV=development
         depends_on: 
@@ -32,8 +32,6 @@ services:
         ports: 
             - "3000:3000"
             - "9229:9229"
-        links: 
-            - db
         container_name: shopify-clone-api
 volumes: 
     db_data: {}

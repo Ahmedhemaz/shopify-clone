@@ -3,7 +3,7 @@ import express from 'express';
 import './infrastructrue/environment'
 import { myContainer } from './infrastructrue/ioc/inversify.config.ts';
 import { TYPES } from './infrastructrue/ioc/types';
-import { IDbHandler } from './infrastructrue/DB/interfaces/IDbHandler';
+import { IDbHandler } from './application/interfaces/IDbHandler';
 
 const dbHandler = myContainer.get<IDbHandler>(TYPES.IDbHandler);
 dbHandler.connect();
