@@ -1,7 +1,7 @@
-import { DbConnectionOptions } from "../../../infrastructrue/DB/dbConnectionOptions"
-import { myContainer } from '../../../infrastructrue/ioc/inversify.config.ts';
-import { TYPES } from '../../../infrastructrue/ioc/types';
-import { IDbConnectionOptions } from "../../../application/interfaces/IDbConnectionOptions";
+import { DbConnectionOptions } from "../../../../infrastructrue/DB/dbConnectionOptions"
+import { myContainer } from '../../../../infrastructrue/ioc/inversify.config.ts';
+import { TYPES } from '../../../../infrastructrue/ioc/types';
+import { IDbConnectionOptions } from "../../../../application/interfaces/IDbConnectionOptions";
 describe('dbConnectionOptions tests', ()=>{
     let dbConnectionOptions: DbConnectionOptions;
     let  mockedConnectionOptions: any;

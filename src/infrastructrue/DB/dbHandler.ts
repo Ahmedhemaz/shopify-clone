@@ -6,7 +6,7 @@ import { IDbHandler } from '../../application/interfaces/IDbHandler';
 @injectable()
 export class DBHandler implements IDbHandler{
     readonly dbConnectionOptions: any;
-    dbConnectionObject: Connection;
+    private dbConnectionObject: Connection;
     constructor(@inject(TYPES.IDbConnectionOptions) dbConnectionOptions:IDbConnectionOptions){
         
         this.dbConnectionOptions = dbConnectionOptions.getConnectionOptions();
