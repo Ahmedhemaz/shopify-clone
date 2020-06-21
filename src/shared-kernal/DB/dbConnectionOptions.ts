@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { injectable } from "inversify";
-import { IDbConnectionOptions } from "../../application/interfaces/IDbConnectionOptions";
+import { IDbConnectionOptions } from "../interfaces/IDbConnectionOptions";
 
 @injectable()
 export class DbConnectionOptions implements IDbConnectionOptions{

@@ -1,9 +1,9 @@
 import 'reflect-metadata';
 import express from 'express';
-import './infrastructrue/environment'
-import { myContainer } from './infrastructrue/ioc/inversify.config.ts';
-import { TYPES } from './infrastructrue/ioc/types';
-import { IDbHandler } from './application/interfaces/IDbHandler';
+import './shared-kernal/environment'
+import { myContainer } from './shared-kernal/ioc/inversify.config.ts';
+import { TYPES } from './shared-kernal/ioc/types';
+import { IDbHandler } from './shared-kernal/interfaces/IDbHandler';
 
 const dbHandler = myContainer.get<IDbHandler>(TYPES.IDbHandler);
 dbHandler.connect();

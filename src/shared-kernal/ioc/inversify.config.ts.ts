@@ -1,8 +1,8 @@
 import { Container } from "inversify";
 import { TYPES } from "./types";
-import { IDbConnectionOptions } from "../../application/interfaces/IDbConnectionOptions";
+import { IDbConnectionOptions } from "../interfaces/IDbConnectionOptions";
 import { DbConnectionOptions } from "../DB/dbConnectionOptions";
-import { IDbHandler } from "../../application/interfaces/IDbHandler";
+import { IDbHandler } from "../interfaces/IDbHandler";
 import { DBHandler } from "../DB/dbHandler";
  
 const myContainer = new Container();

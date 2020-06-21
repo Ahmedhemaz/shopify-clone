@@ -1,8 +1,8 @@
 import { createConnection, Connection } from 'typeorm';
 import { inject, injectable } from 'inversify';
 import { TYPES } from '../ioc/types';
-import { IDbConnectionOptions } from '../../application/interfaces/IDbConnectionOptions';
-import { IDbHandler } from '../../application/interfaces/IDbHandler';
+import { IDbConnectionOptions } from '../interfaces/IDbConnectionOptions';
+import { IDbHandler } from '../interfaces/IDbHandler';
 @injectable()
 export class DBHandler implements IDbHandler{
     readonly dbConnectionOptions: any;

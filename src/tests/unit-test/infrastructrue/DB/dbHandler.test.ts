@@ -1,4 +1,4 @@
-import { DBHandler } from "../../../../infrastructrue/DB/dbHandler"
+import { DBHandler } from "../../../../shared-kernal/DB/dbHandler"
 import { ConnectionOptionsMock } from "../../__mocks__/connectionOptionsMock";
 import { ConnectionObjectMock } from "../../__mocks__/connectionObjectMock";
 import { Connection } from "typeorm";
