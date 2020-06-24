@@ -1,11 +1,11 @@
 import { IValueObject } from "../../shared-kernal/interfaces/IValueObject";
-import { isMobilePhone } from 'validator';
 import { InvalidMobileNumber } from "./errors/invalidMobileNumber.error";
+import  isMobilePhone  from 'validator/lib/isMobilePhone';
 export class MobileNumber implements IValueObject<MobileNumber> {
     public readonly number: string;
 
     constructor(mobileNumber: string){
-        if(isMobilePhone(mobileNumber.trim())){
+        if(isMobilePhone(mobileNumber)){
             this.number = mobileNumber;
         } else {
             throw new InvalidMobileNumber();

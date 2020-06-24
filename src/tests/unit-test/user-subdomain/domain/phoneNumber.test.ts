@@ -1,4 +1,5 @@
 import { MobileNumber } from "../../../../user-subdomain/domain/phoneNumber.valueObject";
+import { InvalidMobileNumber } from "../../../../user-subdomain/domain/errors/invalidMobileNumber.error";
 
 describe('MobileNumber ValueObject tests', ()=> {
     const mockedMobileNumber1 = "01111861123";
@@ -8,9 +9,9 @@ describe('MobileNumber ValueObject tests', ()=> {
         expect(new MobileNumber(mockedMobileNumber1)).toBeInstanceOf(MobileNumber);
     });
 
-    it('should throw error ', ()=>{
+    it('should throw invalidMobileNumber error ', ()=>{
         expect(()=> new MobileNumber(inValidMobileNumber))
-        .toThrowError('invalid mobile number');
+        .toThrowError(new InvalidMobileNumber());
     });
 
     it('should return true m1 === m2', ()=> {
