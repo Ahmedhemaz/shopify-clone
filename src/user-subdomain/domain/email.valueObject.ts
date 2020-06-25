@@ -1,12 +1,12 @@
 import { IValueObject } from "../../shared-kernal/interfaces/IValueObject";
-import { InvalidEmail } from "./errors/invalidEmail.error";
+import { InvalidEmailExepction } from "./errors/invalidEmail.exepction";
 import  isEmail  from 'validator/lib/isEmail';
 export class Email implements IValueObject<Email> {
+    
     private readonly email:string;
+
     constructor(email: string){
-        if(!isEmail(email)){
-            throw new InvalidEmail();
-        }
+        if(!isEmail(email)) throw new InvalidEmailExepction();
         this.email = email;
     }
 

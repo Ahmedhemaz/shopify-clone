@@ -1,5 +1,5 @@
 import { Email } from "../../../../user-subdomain/domain/email.valueObject";
-import { InvalidEmail } from "../../../../user-subdomain/domain/errors/invalidEmail.error";
+import { InvalidEmailExepction } from "../../../../user-subdomain/domain/errors/invalidEmail.exepction";
 
 describe(' Email ValueObject tests ', ()=>{
     const validEmailMock1 = "foo.bar@gmail.com";
@@ -12,7 +12,7 @@ describe(' Email ValueObject tests ', ()=>{
 
     test.each(invalidEmailMocks)('should throw invalidEmail error', (input)=>{
         expect(()=> new Email(input))
-        .toThrowError(new InvalidEmail());
+        .toThrowError(new InvalidEmailExepction());
     })
 
     it('should return true mail1 equals mail2', ()=>{
