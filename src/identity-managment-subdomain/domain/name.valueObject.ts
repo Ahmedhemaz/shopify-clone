@@ -1,14 +1,15 @@
 import { IValueObject } from "../../shared-kernal/interfaces/IValueObject";
-import { EmptyStringExepction } from "./errors/emptyString.exepction";
+import { EmptyStringException } from "./errors/emptyString.exception";
 import isEmpty from 'validator/lib/isEmpty';
+import { ErrorMessages } from "./errors/customErrorMessagesEnum";
 export class FullName implements IValueObject<FullName> {
 
     private readonly firstName: string;
     private readonly lastName: string;
 
     constructor(firstName: string, lastName: string){
-        if(isEmpty(firstName,{ignore_whitespace: true})) throw new EmptyStringExepction(`first Name Can't be empty`);
-        if(isEmpty(lastName, {ignore_whitespace: true})) throw new EmptyStringExepction(`last Name Can't be empty`);
+        if(isEmpty(firstName,{ignore_whitespace: true})) throw new EmptyStringException(ErrorMessages.EMPTY_FIRST_NAME);
+        if(isEmpty(lastName, {ignore_whitespace: true})) throw new EmptyStringException(ErrorMessages.EMPTY_LAST_NAME);
         
         this.firstName = firstName;
         this.lastName = lastName;
