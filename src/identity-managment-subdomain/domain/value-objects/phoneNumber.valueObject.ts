@@ -1,5 +1,5 @@
-import { IValueObject } from "../../shared-kernal/interfaces/IValueObject";
-import { InvalidMobileNumberException } from "./errors/invalidMobileNumber.exception";
+import { IValueObject } from "../../../shared-kernal/interfaces/IValueObject";
+import { InvalidMobileNumberException } from "../errors/invalidMobileNumber.exception";
 import  isMobilePhone  from 'validator/lib/isMobilePhone';
 export class MobileNumber implements IValueObject<MobileNumber> {
     public readonly number: string;

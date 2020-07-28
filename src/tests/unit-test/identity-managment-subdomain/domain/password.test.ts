@@ -1,4 +1,4 @@
-import { Password } from "../../../../identity-managment-subdomain/domain/password.valueObject";
+import { Password } from "../../../../identity-managment-subdomain/domain/value-objects/password.valueObject";
 import { StringLengthException } from "../../../../identity-managment-subdomain/domain/errors/invalidStringLength.exception";
 import { ErrorMessages } from "../../../../identity-managment-subdomain/domain/errors/customErrorMessagesEnum";
 import { PasswordFormatException } from "../../../../identity-managment-subdomain/domain/errors/passwordFormat.exception";

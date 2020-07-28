@@ -1,4 +1,4 @@
-import { MobileNumber } from "../../../../identity-managment-subdomain/domain/phoneNumber.valueObject";
+import { MobileNumber } from "../../../../identity-managment-subdomain/domain/value-objects/phoneNumber.valueObject";
 import { InvalidMobileNumberException } from "../../../../identity-managment-subdomain/domain/errors/invalidMobileNumber.exception";
 
 describe('MobileNumber ValueObject tests', ()=> {

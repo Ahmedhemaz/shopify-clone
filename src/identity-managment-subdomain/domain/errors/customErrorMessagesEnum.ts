@@ -8,5 +8,6 @@ export enum ErrorMessages {
     EMPTY_POSTAL_CODE = `postal Code Can't be empty`,
     INVALID_POSTAL_CODE = 'invalid postal code',
     EMPTY_FIRST_NAME = `first Name Can't be empty`,
-    EMPTY_LAST_NAME = `last Name Can't be empty`
+    EMPTY_LAST_NAME = `last Name Can't be empty`,
+    INVALID_UUID_V4 = `unique identity must be UUID version 4 format`
 }

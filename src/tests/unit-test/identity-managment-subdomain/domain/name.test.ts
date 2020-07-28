@@ -1,5 +1,6 @@
-import { FullName } from "../../../../identity-managment-subdomain/domain/name.valueObject";
+import { FullName } from "../../../../identity-managment-subdomain/domain/value-objects/name.valueObject";
 import { EmptyStringException } from "../../../../identity-managment-subdomain/domain/errors/emptyString.exception";
+import { ErrorMessages } from "../../../../identity-managment-subdomain/domain/errors/customErrorMessagesEnum";
 
 describe('FullName ValueObject tests', ()=> {
     const validFirstName: string = "foo";
@@ -12,12 +13,12 @@ describe('FullName ValueObject tests', ()=> {
 
     test.each(invalidStrings)('first name should throw EmptyStringExepction', (input)=>{
         expect(()=> new FullName(input, validLastName))
-        .toThrowError(new EmptyStringException(`first Name Can't be empty`));
+        .toThrowError(new EmptyStringException(ErrorMessages.EMPTY_FIRST_NAME));
     });
 
     test.each(invalidStrings)('last name should throw EmptyStringExepction', (input)=>{
         expect(()=> new FullName(validFirstName, input))
-        .toThrowError(new EmptyStringException(`last Name Can't be empty`));
+        .toThrowError(new EmptyStringException(ErrorMessages.EMPTY_LAST_NAME));
     });
 
     it('should return true fullName equals fullName', ()=>{

@@ -1,4 +1,4 @@
-import { Email } from "../../../../identity-managment-subdomain/domain/email.valueObject";
+import { Email } from "../../../../identity-managment-subdomain/domain/value-objects/email.valueObject";
 import { InvalidEmailException } from "../../../../identity-managment-subdomain/domain/errors/invalidEmail.exception";
 
 describe(' Email ValueObject tests ', ()=>{
