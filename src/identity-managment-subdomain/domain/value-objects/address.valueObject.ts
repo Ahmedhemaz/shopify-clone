@@ -4,8 +4,7 @@ import { InvalidPostalCodeException } from "../errors/invalidPostalCode.exceptio
 import { ErrorMessages } from "../errors/customErrorMessagesEnum";
 import isEmpty from "validator/lib/isEmpty";
 import isPostalCode from "validator/lib/isPostalCode";
-import { AddressBuilder } from "../../infrastructrue/builders/AddresBuilder.interface";
-
+import { AddressBuilder } from '../interfaces/builders/AddresBuilder.interface';
 export class Address implements IValueObject<Address> {
 
     private readonly  country: string;
@@ -76,7 +75,7 @@ export class Address implements IValueObject<Address> {
         }
 
         public build(): Address{
-            return new Address(this)
+            return new Address(this);
         }
         public getCountry(): string{
             return this.country;

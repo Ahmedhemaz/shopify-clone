@@ -1,4 +1,4 @@
-import { Address } from "../../domain/value-objects/address.valueObject";
+import { Address } from "../../value-objects/address.valueObject";
 
 export interface AddressBuilder {
   setCountry(country: string) : AddressBuilder;

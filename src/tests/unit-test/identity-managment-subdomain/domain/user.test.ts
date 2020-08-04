@@ -2,7 +2,12 @@ import { User } from "../../../../identity-managment-subdomain/domain/user.entit
 
 describe('user entity tests', ()=>{
     it('should create user with uId', ()=>{
-        new User().setName('Ahmed','Ibrahim').setAddress('l','o','l','11111');
+        let user:User = new User.userBuilder()
+                        .setName('Ahmed', 'Ibrahim')
+                        .setMail('asdsadasd@asd.com')
+                        .setPassword('654123%aA%!231')
+                        .build();
+
     });
 
 })
