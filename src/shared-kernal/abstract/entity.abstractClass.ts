@@ -1,4 +1,4 @@
-import { UniqueEntityId } from "../domain/value-objects/UniqueEntityId.valueObject";
+import { UniqueEntityId } from "../../identity-managment-subdomain/domain/value-objects/UniqueEntityId.valueObject";
 
 export abstract class  Entity {
     private readonly uId: UniqueEntityId;

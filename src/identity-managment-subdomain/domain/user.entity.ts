@@ -1,4 +1,4 @@
-import { Entity } from "../infrastructrue/entity.abstractClass";
+import { Entity } from "../../shared-kernal/abstract/entity.abstractClass";
 import { UserBuilder } from "./interfaces/builders/UserBuilder.interface";
 import { FullName } from "./value-objects/name.valueObject";
 import { Password } from "./value-objects/password.valueObject";
@@ -24,7 +24,7 @@ export class User extends Entity {
     private userEventEmitter: UserEventEmitter;
 
     constructor(userBuilder: UserBuilder){
-        super(userBuilder.getUId().getUniqueIdentity());    
+        super(userBuilder.getUId().getUniqueIdentity());
         this.name = userBuilder.getName();
         this.password = userBuilder.getPassword();
         this.address = userBuilder.getAddress();

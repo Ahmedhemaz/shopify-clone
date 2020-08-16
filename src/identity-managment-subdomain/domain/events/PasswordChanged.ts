@@ -5,9 +5,11 @@ import date from 'date-and-time';
 export class PasswordChanged implements IDomainEvent{
     private date: string;
     private userId: UniqueEntityId;
-    constructor(userId: string){
+    private hashedPassword: string;
+    constructor(userId: string, hashedPassword?: string){
         this.occurredOn();
         this.userId = new UniqueEntityId(userId);
+        this.hashedPassword = hashedPassword;
     }
     occurredOn(): void {
         this.date = date.format(new Date(), 'DD/MM/YYYY HH:mm:ss');
@@ -17,6 +19,9 @@ export class PasswordChanged implements IDomainEvent{
     }
     public getUserId(): UniqueEntityId {
         return this.userId;
+    }
+    public getHashedPassword(): string {
+        return this.hashedPassword;
     }
     
 }
