@@ -7,16 +7,17 @@ import isPostalCode from "validator/lib/isPostalCode";
 import { AddressBuilder } from '../interfaces/builders/AddresBuilder.interface';
 export class Address implements IValueObject<Address> {
 
-    private readonly  country: string;
-    private readonly  city: string;
-    private readonly  street: string;
-    private readonly  postalCode: string;
+    private  country: string;
+    private  city: string;
+    private  street: string;
+    private  postalCode: string;
 
-    constructor(addressBuilder: AddressBuilder){
-        this.country = addressBuilder.getCountry();
-        this.city = addressBuilder.getCity();
-        this.street = addressBuilder.getStreet();
-        this.postalCode = addressBuilder.getPostalCode();          
+    constructor(country: string, city: string, street: string, postalCode: string){
+        this.setCountry(country);
+        this.setCity(city);
+        this.setStreet(street);
+        this.setPostalCode(postalCode);
+        Object.freeze(this);
     }
 
     public equals(anAddress: Address): boolean {
@@ -42,57 +43,25 @@ export class Address implements IValueObject<Address> {
         return this.postalCode;
     }
 
-    static AddressBuilder = class AddressBuilder{
-        private country: string;
-        private city: string;
-        private street: string;
-        private postalCode: string;
-        constructor(){}
+    private setCountry(country: string) : void{
+        if(isEmpty(country, {ignore_whitespace: true})) throw new EmptyStringException(ErrorMessages.EMPTY_COUNTRY);
+        this.country = country;
+    }
 
-        public setCountry(country: string) : AddressBuilder{
-            if(isEmpty(country, {ignore_whitespace: true})) throw new EmptyStringException(ErrorMessages.EMPTY_COUNTRY);
-            this.country = country;
-            return this;
-        }
-    
-        public setCity(city: string) : AddressBuilder{
-            if(isEmpty(city, {ignore_whitespace: true})) throw new EmptyStringException(ErrorMessages.EMPTY_CITY);
-            this.city = city;
-            return this;
-        }
-    
-        public setStreet(street: string) : AddressBuilder{
-            if(isEmpty(street, {ignore_whitespace: true})) throw new EmptyStringException(ErrorMessages.EMPTY_STREET);
-            this.street = street;
-            return this;
-        }
-    
-        public setPostalCode(postalCode: string) : AddressBuilder{
-            if(isEmpty(postalCode,{ignore_whitespace: true})) throw new EmptyStringException(ErrorMessages.EMPTY_POSTAL_CODE);
-            if(!isPostalCode(postalCode, "EE")) throw new InvalidPostalCodeException(ErrorMessages.INVALID_POSTAL_CODE);
-            this.postalCode = postalCode;
-            return this;
-        }
+    private setCity(city: string) : void{
+        if(isEmpty(city, {ignore_whitespace: true})) throw new EmptyStringException(ErrorMessages.EMPTY_CITY);
+        this.city = city;
+    }
 
-        public build(): Address{
-            return new Address(this);
-        }
-        public getCountry(): string{
-            return this.country;
-        }
-    
-        public getCity(): string {
-            return this.city;
-        }
-    
-        public getStreet(): string {
-            return this.street;
-        }
-    
-        public getPostalCode(): string {
-            return this.postalCode;
-        }
+    private setStreet(street: string) : void{
+        if(isEmpty(street, {ignore_whitespace: true})) throw new EmptyStringException(ErrorMessages.EMPTY_STREET);
+        this.street = street;
+    }
 
+    private setPostalCode(postalCode: string) : void{
+        if(isEmpty(postalCode,{ignore_whitespace: true})) throw new EmptyStringException(ErrorMessages.EMPTY_POSTAL_CODE);
+        if(!isPostalCode(postalCode, "EE")) throw new InvalidPostalCodeException(ErrorMessages.INVALID_POSTAL_CODE);
+        this.postalCode = postalCode;
     }
 
 }
