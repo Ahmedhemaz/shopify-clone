@@ -1,6 +1,6 @@
 import { UniqueEntityId } from "../../../../identity-managment-subdomain/domain/value-objects/UniqueEntityId.valueObject"
-import { InvalidUniqueIdentityException } from "../../../../identity-managment-subdomain/domain/errors/invalidUniqueIdentity.exception";
 import { ErrorMessages } from "../../../../identity-managment-subdomain/domain/errors/customErrorMessagesEnum";
+import { InvalidUniqueIdentityException } from "../../../../identity-managment-subdomain/domain/value-objects/exceptions/invalidUniqueIdentity.exception";
 
 describe('UniqueEntityId tests', ()=>{
     const invalidUniqueIdentity: string = 'asdqw-asdqw-213-a'

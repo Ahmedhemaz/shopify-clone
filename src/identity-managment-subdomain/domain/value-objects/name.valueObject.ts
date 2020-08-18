@@ -1,5 +1,5 @@
 import { IValueObject } from "../../../shared-kernal/interfaces/IValueObject";
-import { EmptyStringException } from "../errors/emptyString.exception";
+import { EmptyStringException } from "./exceptions/emptyString.exception";
 import isEmpty from 'validator/lib/isEmpty';
 import { ErrorMessages } from "../errors/customErrorMessagesEnum";
 export class FullName implements IValueObject<FullName> {

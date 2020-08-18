@@ -1,10 +1,9 @@
 import { IValueObject } from "../../../shared-kernal/interfaces/IValueObject";
-import { EmptyStringException } from "../errors/emptyString.exception";
-import { InvalidPostalCodeException } from "../errors/invalidPostalCode.exception";
+import { EmptyStringException } from "./exceptions/emptyString.exception";
+import { InvalidPostalCodeException } from "./exceptions/invalidPostalCode.exception";
 import { ErrorMessages } from "../errors/customErrorMessagesEnum";
 import isEmpty from "validator/lib/isEmpty";
 import isPostalCode from "validator/lib/isPostalCode";
-import { AddressBuilder } from '../interfaces/builders/AddresBuilder.interface';
 export class Address implements IValueObject<Address> {
 
     private  country: string;

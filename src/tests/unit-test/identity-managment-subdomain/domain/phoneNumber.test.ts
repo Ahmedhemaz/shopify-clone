@@ -1,5 +1,5 @@
 import { MobileNumber } from "../../../../identity-managment-subdomain/domain/value-objects/phoneNumber.valueObject";
-import { InvalidMobileNumberException } from "../../../../identity-managment-subdomain/domain/errors/invalidMobileNumber.exception";
+import { InvalidMobileNumberException } from "../../../../identity-managment-subdomain/domain/value-objects/exceptions/invalidMobileNumber.exception";
 
 describe('MobileNumber ValueObject tests', ()=> {
     const mockedMobileNumber1: string = "01111861123";

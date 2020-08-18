@@ -1,5 +1,5 @@
 import { IValueObject } from "../../../shared-kernal/interfaces/IValueObject";
-import { InvalidUniqueIdentityException } from '../errors/invalidUniqueIdentity.exception';
+import { InvalidUniqueIdentityException } from './exceptions/invalidUniqueIdentity.exception';
 import { ErrorMessages } from '../errors/customErrorMessagesEnum';
 import { v4 as uuidv4 } from 'uuid';
 import isUUID from 'validator/lib/isUUID';

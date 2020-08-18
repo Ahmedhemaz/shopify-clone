@@ -1,5 +1,5 @@
 import { IValueObject } from "../../../shared-kernal/interfaces/IValueObject";
-import { InvalidEmailException } from "../errors/invalidEmail.exception";
+import { InvalidEmailException } from "./exceptions/invalidEmail.exception";
 import  isEmail  from 'validator/lib/isEmail';
 export class Email implements IValueObject<Email> {
     
