@@ -8,10 +8,18 @@ import { IHashService } from "../../identity-managment-subdomain/domain/interfac
 import { HashingService } from "../../identity-managment-subdomain/domain/services/hashing.service";
 import { IAuthenticationService } from "../../identity-managment-subdomain/domain/interfaces/services/authenticationService.interface";
 import { AuthenticationService } from "../../identity-managment-subdomain/domain/services/authentication.service";
+import { IUserRepository } from "../../identity-managment-subdomain/infrastructrue/interfaces/IUserRepository";
+import { UserRepository } from "../../identity-managment-subdomain/infrastructrue/persistance/repositories/UserRepository";
+import { IDataMapper } from "../interfaces/IDataMapper";
+import { UserDataMapper } from "../../identity-managment-subdomain/domain/mappers/user.mapper";
+import { User } from "../../identity-managment-subdomain/domain/user.entity";
+import { UserDataModel } from "../../identity-managment-subdomain/infrastructrue/persistance/models/UserDataModel";
  
 const myContainer = new Container();
 myContainer.bind<IDbConnectionOptions>(TYPES.IDbConnectionOptions).to(DbConnectionOptions);
 myContainer.bind<IDbHandler>(TYPES.IDbHandler).to(DBHandler);
 myContainer.bind<IHashService>(TYPES.IHashService).to(HashingService);
 myContainer.bind<IAuthenticationService>(TYPES.IAuthenticationService).to(AuthenticationService);
+myContainer.bind<IUserRepository>(TYPES.IUserRepository).to(UserRepository);
+myContainer.bind<IDataMapper<User, any, UserDataModel>>(TYPES.IDataMapper).to(UserDataMapper);
 export { myContainer };
