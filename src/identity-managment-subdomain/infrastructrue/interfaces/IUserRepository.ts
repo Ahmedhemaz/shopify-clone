@@ -1,10 +1,10 @@
 import { Email } from "../../domain/value-objects/email.valueObject";
-import { User } from "../../domain/user.entity";
 import { UniqueEntityId } from "../../domain/value-objects/UniqueEntityId.valueObject";
+import { UserDataModel } from "../persistance/models/UserDataModel";
 
 export interface IUserRepository {
-    findUserOfMail(mail: Email): User;
-    findUserOfId(userId: UniqueEntityId): User;
-    create(user: User): void;
-    update(user: User): void;
+    findUserOfMail(mail: Email): UserDataModel;
+    findUserOfId(userId: UniqueEntityId): UserDataModel;
+    create(user: UserDataModel): void;
+    update(user: UserDataModel): void;
 }

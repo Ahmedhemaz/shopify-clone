@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import { createConnection, Connection } from 'typeorm';
 import { inject, injectable } from 'inversify';
 import { TYPES } from '../ioc/types';

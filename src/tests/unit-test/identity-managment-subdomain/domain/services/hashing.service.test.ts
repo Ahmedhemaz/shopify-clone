@@ -3,6 +3,6 @@ import { HashingService } from "../../../../../identity-managment-subdomain/doma
 describe('encryption service test', ()=>{
     it('should encrypt plain text password', async()=>{
         const encryptionService: HashingService = new HashingService();
-        await encryptionService.hashPassword('Password');
+        await encryptionService.hashPassword('P@55word');
     });
 });

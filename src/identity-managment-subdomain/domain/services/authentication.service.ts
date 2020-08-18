@@ -3,20 +3,27 @@ import { IAuthenticationService } from "../interfaces/services/authenticationSer
 import { IHashService } from "../interfaces/services/hashService.interface";
 import { inject, injectable } from "inversify";
 import { TYPES } from "../../../shared-kernal/ioc/types";
+import { IUserRepository } from '../../infrastructrue/interfaces/IUserRepository';
+import { Email } from '../value-objects/email.valueObject';
+import { Password } from '../value-objects/password.valueObject';
+import { UserDataModel } from '../../infrastructrue/persistance/models/UserDataModel';
 
 @injectable()
 export class AuthenticationService implements IAuthenticationService{
     private hashService: IHashService;
-    //todo inject repository of user to get hashed password
-    //create unit tests of authentication service
-    constructor(@inject(TYPES.IHashService) hashService:IHashService){
+    private userRepository: IUserRepository;
+    constructor(
+        @inject(TYPES.IHashService) hashService:IHashService,
+        @inject(TYPES.IUserRepository) userRepository: IUserRepository){
         this.hashService = hashService;
+        this.userRepository = userRepository;
     }
     public async authenticate(mailAddress: string, password: string): Promise<boolean>{
-        return await this.isCorrectPassword(password);
+        const user: UserDataModel = this.userRepository.findUserOfMail(new Email(mailAddress));
+        return await this.isCorrectPassword(new Password(password), user.hashedPassword);
     }
 
-    public async isCorrectPassword(password: string): Promise<boolean> {
-        return await this.hashService.compareHash(password, '$2b$10$Ky6LMZh0C41QdLbyXOiWZeAY1mTC916c3w7M1Y8T5Oqg39t44YNa2');
+    public async isCorrectPassword(password: Password, hashedPassword:string): Promise<boolean> {
+        return await this.hashService.compareHash(password.getPassword(), hashedPassword);
     }
 }

@@ -2,6 +2,7 @@ FROM node:12.18.1-slim
 WORKDIR /usr/app
 COPY package.json .
 RUN npm install -g typeorm
+RUN npm install bcrypt --save
 RUN npm install
 COPY . .
 RUN ["chmod", "+x", "./entrypoint.sh"]
