@@ -3,7 +3,7 @@ import { AddressDto } from "./AddressDto";
 
 export interface UserDto {
     fullName: FullNameDto;
-    maill: string;
+    emaill: string;
     password: string;
     mobile: string;
     address: AddressDto;

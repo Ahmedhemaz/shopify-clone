@@ -1,3 +1,4 @@
+// edit types to concerete class
 const TYPES = {
     IDbConnectionOptions: Symbol.for("IDbConnectionOptions"),
     IDbHandler: Symbol.for("IDbHandler"),
@@ -6,6 +7,8 @@ const TYPES = {
     IAuthenticationService: Symbol.for("IAuthenticationService"),
     IUserRepository: Symbol.for('IUserRepository'),
     IDataMapper: Symbol.for("IDataMapper"),
+    RegisterUserRequestBodyValidator: Symbol.for("RegisterUserRequestBodyValidator"),
+    IMiddleware: Symbol.for("IMiddleware"),
     
 };
  

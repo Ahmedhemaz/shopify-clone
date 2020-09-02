@@ -14,6 +14,12 @@ import { IDataMapper } from "../interfaces/IDataMapper";
 import { UserDataMapper } from "../../identity-managment-subdomain/domain/mappers/user.mapper";
 import { User } from "../../identity-managment-subdomain/domain/user.entity";
 import { UserDataModel } from "../../identity-managment-subdomain/infrastructrue/persistance/models/UserDataModel";
+import { IRequestBodyValidator } from "../../identity-managment-subdomain/application/validators/request-body-validators/IRequestBodyValidator";
+import { UserDto } from "../../identity-managment-subdomain/application/Dto/UserDto";
+import { RegisterUserRequestBodyValidator } from "../../identity-managment-subdomain/application/validators/request-body-validators/RegisterUserRequestBodyValidator";
+import { IMiddleware } from "../../identity-managment-subdomain/application/middlewares/IMiddleware";
+import { Request, Response } from "express";
+import { RegisterUserMiddleware } from "../../identity-managment-subdomain/application/middlewares/registerUserMiddleware";
  
 const myContainer = new Container();
 myContainer.bind<IDbConnectionOptions>(TYPES.IDbConnectionOptions).to(DbConnectionOptions);
@@ -22,4 +28,6 @@ myContainer.bind<IHashService>(TYPES.IHashService).to(HashingService);
 myContainer.bind<IAuthenticationService>(TYPES.IAuthenticationService).to(AuthenticationService);
 myContainer.bind<IUserRepository>(TYPES.IUserRepository).to(UserRepository);
 myContainer.bind<IDataMapper<User, any, UserDataModel>>(TYPES.IDataMapper).to(UserDataMapper);
+myContainer.bind<IMiddleware<Request, Response>>(TYPES.IMiddleware).to(RegisterUserMiddleware);
+myContainer.bind<IRequestBodyValidator<UserDto>>(TYPES.RegisterUserRequestBodyValidator).to(RegisterUserRequestBodyValidator)
 export { myContainer };
