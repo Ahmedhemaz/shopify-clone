@@ -1,6 +1,6 @@
 export enum ErrorMessages {
     EMPTY_PASSWORD = `password Can't be empty`,
-    PASSWORD_LENGTH = `password length must contain 8-20 character`,
+    PASSWORD_LENGTH = `password min length be 8 character`,
     INVALID_PASSWORD_FORMAT =  `must contain at least 1 special, 1 uppercase and 1 small character`,
     EMPTY_COUNTRY = `Country Can't be empty`,
     EMPTY_CITY = `city Can't be empty`,

@@ -10,7 +10,7 @@ export class Password implements IValueObject<Password> {
     private readonly password: string;
     constructor(password: string) {
         if(isEmpty(password,{ignore_whitespace: true})) throw new EmptyStringException(ErrorMessages.EMPTY_PASSWORD);
-        if(!isLength(password, {min:8, max:20})) throw new StringLengthException(ErrorMessages.PASSWORD_LENGTH);
+        if(!isLength(password, {min:8})) throw new StringLengthException(ErrorMessages.PASSWORD_LENGTH);
         if(!this.isValidPasswordFormat(password)) throw new PasswordFormatException(ErrorMessages.INVALID_PASSWORD_FORMAT);
         this.password = password;
     };

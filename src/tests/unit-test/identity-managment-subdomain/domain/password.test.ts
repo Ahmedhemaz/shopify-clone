@@ -6,7 +6,6 @@ import { PasswordFormatException } from "../../../../identity-managment-subdomai
 describe('Password ValueObject tests', ()=>{
     const validPassword: string = '@AsD123t';
     const invalidPasswordMinLength: string = '@A1er';
-    const invalidPasswordMaxLength: string = '@G1aaaaaaaaaaaaaaaaaaaaa@T';
     const invalidPasswordFormat: string = 'passwordformat';
 
     it('should create password value object', ()=>{
@@ -18,10 +17,6 @@ describe('Password ValueObject tests', ()=>{
         .toThrowError(new StringLengthException(ErrorMessages.PASSWORD_LENGTH));
     });
 
-    it('should throw password length exception', ()=>{
-        expect(()=> new Password(invalidPasswordMaxLength))
-        .toThrowError(new StringLengthException(ErrorMessages.PASSWORD_LENGTH));
-    });
 
     it('should throw password format exception', ()=>{
         expect(()=> new Password(invalidPasswordFormat))
