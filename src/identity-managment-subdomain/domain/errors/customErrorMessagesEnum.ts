@@ -9,6 +9,8 @@ export enum ErrorMessages {
     INVALID_POSTAL_CODE = 'invalid postal code',
     EMPTY_FIRST_NAME = `first Name Can't be empty`,
     EMPTY_LAST_NAME = `last Name Can't be empty`,
+    EMPTY_EMAIL = `email Can't be empty`,
+    EMPTY_MOBILE = `mobile Can't be empty`,
     INVALID_UUID_V4 = `unique identity must be UUID version 4 format`,
     NEW_PASSWORD_SAME_AS_OLD_PASSWORD = `new password must not be same as old password`
 }

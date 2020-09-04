@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { IRequestBodyValidator } from "./IRequestBodyValidator";
 import { UserDto } from "../../Dto/UserDto";
 import { FullNameDto } from "../../Dto/FullNameDto";
@@ -22,7 +23,7 @@ export class RegisterUserRequestBodyValidator implements IRequestBodyValidator<U
     public isRequestBodyValid(body: UserDto): boolean{
         return this.isFullNameValid(body.fullName) &&
                this.isAddressValid(body.address) &&
-               this.isMailValid(body.emaill) &&
+               this.isMailValid(body.email) &&
                this.isMobileValid(body.mobile) &&
                this.isPasswordValid(body.password);
 
@@ -42,11 +43,13 @@ export class RegisterUserRequestBodyValidator implements IRequestBodyValidator<U
     }
 
     private isMailValid(email: string): boolean{
+        if(isEmpty(email,{ignore_whitespace: true})) throw new EmptyStringException(ErrorMessages.EMPTY_EMAIL);
         if(!isEmail(email)) throw new InvalidEmailException();
         return true;
     }
 
     private isMobileValid(mobile: string): boolean{
+        if(isEmpty(mobile,{ignore_whitespace: true})) throw new EmptyStringException(ErrorMessages.EMPTY_MOBILE);
         if(!isMobilePhone(mobile)) throw new InvalidMobileNumberException();
         return true;
     }
