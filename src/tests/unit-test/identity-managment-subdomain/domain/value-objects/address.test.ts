@@ -1,7 +1,7 @@
-import { Address } from '../../../../identity-managment-subdomain/domain/value-objects/address.valueObject';
-import { EmptyStringException } from "../../../../identity-managment-subdomain/domain/value-objects/exceptions/emptyString.exception";
-import { ErrorMessages } from '../../../../identity-managment-subdomain/domain/errors/customErrorMessagesEnum';
-import { InvalidPostalCodeException } from '../../../../identity-managment-subdomain/domain/value-objects/exceptions/invalidPostalCode.exception';
+import { Address } from '../../../../../identity-managment-subdomain/domain/value-objects/address.valueObject';
+import { EmptyStringException } from "../../../../../identity-managment-subdomain/domain/value-objects/exceptions/emptyString.exception";
+import { ErrorMessages } from '../../../../../identity-managment-subdomain/domain/errors/customErrorMessagesEnum';
+import { InvalidPostalCodeException } from '../../../../../identity-managment-subdomain/domain/value-objects/exceptions/invalidPostalCode.exception';
 
 describe('Address ValueObject tests', ()=>{
 

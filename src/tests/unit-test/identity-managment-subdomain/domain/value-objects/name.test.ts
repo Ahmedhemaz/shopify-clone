@@ -1,6 +1,6 @@
-import { FullName } from "../../../../identity-managment-subdomain/domain/value-objects/name.valueObject";
-import { EmptyStringException } from "../../../../identity-managment-subdomain/domain/value-objects/exceptions/emptyString.exception";
-import { ErrorMessages } from "../../../../identity-managment-subdomain/domain/errors/customErrorMessagesEnum";
+import { FullName } from "../../../../../identity-managment-subdomain/domain/value-objects/name.valueObject";
+import { EmptyStringException } from "../../../../../identity-managment-subdomain/domain/value-objects/exceptions/emptyString.exception";
+import { ErrorMessages } from "../../../../../identity-managment-subdomain/domain/errors/customErrorMessagesEnum";
 
 describe('FullName ValueObject tests', ()=> {
     const validFirstName: string = "foo";

@@ -1,7 +1,7 @@
-import { Password } from "../../../../identity-managment-subdomain/domain/value-objects/password.valueObject";
-import { ErrorMessages } from "../../../../identity-managment-subdomain/domain/errors/customErrorMessagesEnum";
-import { StringLengthException } from "../../../../identity-managment-subdomain/domain/value-objects/exceptions/invalidStringLength.exception";
-import { PasswordFormatException } from "../../../../identity-managment-subdomain/domain/value-objects/exceptions/passwordFormat.exception";
+import { Password } from "../../../../../identity-managment-subdomain/domain/value-objects/password.valueObject";
+import { ErrorMessages } from "../../../../../identity-managment-subdomain/domain/errors/customErrorMessagesEnum";
+import { StringLengthException } from "../../../../../identity-managment-subdomain/domain/value-objects/exceptions/invalidStringLength.exception";
+import { PasswordFormatException } from "../../../../../identity-managment-subdomain/domain/value-objects/exceptions/passwordFormat.exception";
 
 describe('Password ValueObject tests', ()=>{
     const validPassword: string = '@AsD123t';

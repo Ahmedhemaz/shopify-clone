@@ -1,5 +1,5 @@
-import { Email } from "../../../../identity-managment-subdomain/domain/value-objects/email.valueObject";
-import { InvalidEmailException } from "../../../../identity-managment-subdomain/domain/value-objects/exceptions/invalidEmail.exception";
+import { Email } from "../../../../../identity-managment-subdomain/domain/value-objects/email.valueObject";
+import { InvalidEmailException } from "../../../../../identity-managment-subdomain/domain/value-objects/exceptions/invalidEmail.exception";
 
 describe(' Email ValueObject tests ', ()=>{
     const validEmailMock1: string = "foo.bar@gmail.com";
