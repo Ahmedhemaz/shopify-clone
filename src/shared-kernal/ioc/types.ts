@@ -6,7 +6,7 @@ const TYPES = {
     IHashService: Symbol.for("IHashService"),
     IAuthenticationService: Symbol.for("IAuthenticationService"),
     IUserRepository: Symbol.for('IUserRepository'),
-    IDataMapper: Symbol.for("IDataMapper"),
+    IDataModelMapper: Symbol.for("IDataMapper"),
     RegisterUserRequestBodyValidator: Symbol.for("RegisterUserRequestBodyValidator"),
     IMiddleware: Symbol.for("IMiddleware"),
     

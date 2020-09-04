@@ -7,7 +7,7 @@ import { ErrorMessages } from "../errors/customErrorMessagesEnum";
 import { IUserRepository } from "../../infrastructrue/interfaces/IUserRepository";
 import { Email } from "../value-objects/email.valueObject";
 import { UserDataModel } from "../../infrastructrue/persistance/models/UserDataModel";
-import { IDataMapper } from "../../../shared-kernal/interfaces/IDataMapper";
+import { IDataModelMapper } from "../../../shared-kernal/interfaces/IDataModelMapper";
 import { User } from "../user.entity";
 
 
@@ -15,11 +15,11 @@ export class ChangePasswordService implements IChangePasswordService {
 
     private hashingService: IHashService;
     private userRepository: IUserRepository;
-    private userDataMapper: IDataMapper<User, any, UserDataModel>;
+    private userDataMapper: IDataModelMapper<User, UserDataModel>;
     constructor(
         @inject(TYPES.IHashService) hashingService:IHashService,
         @inject(TYPES.IUserRepository) userRepository: IUserRepository,
-        @inject(TYPES.IDataMapper) userDataMapper: IDataMapper<User, any, UserDataModel>){
+        @inject(TYPES.IDataModelMapper) userDataMapper: IDataModelMapper<User,UserDataModel>){
             this.hashingService = hashingService
             this.userRepository = userRepository;
             this.userDataMapper = userDataMapper;

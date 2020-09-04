@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import { IDataMapper } from "../../../shared-kernal/interfaces/IDataMapper";
+import { IDataModelMapper } from "../../../shared-kernal/interfaces/IDataModelMapper";
 import { User } from "../user.entity";
 import { UserDataModel } from "../../infrastructrue/persistance/models/UserDataModel";
 import { injectable, inject } from "inversify";
@@ -11,19 +11,11 @@ import { Address } from "../value-objects/address.valueObject";
 import { AddressDataModel } from "../../infrastructrue/persistance/models/AddressDataModel";
 
 @injectable()
-export class UserDataMapper implements IDataMapper<User, any ,UserDataModel> {
+export class UserDataMapper implements IDataModelMapper<User,UserDataModel> {
     
     private hashingService: IHashService;
     constructor(@inject(TYPES.IHashService) hashingService:IHashService){
         this.hashingService = hashingService;
-    }
-
-    public mapDomainModelToDto(domainModel: User): any {
-        throw new Error("Method not implemented.");
-    }
-    
-    public mapDtoToDomainModel(dto: any): User {
-        throw new Error("Method not implemented.");
     }
 
     public async mapDomainModelToDataModel(domainModel: User): Promise<UserDataModel> {
