@@ -4,7 +4,7 @@ import { IRequestBodyValidator } from "../validators/request-body-validators/IRe
 import { UserDto } from "../Dto/UserDto";
 import { inject, injectable } from "inversify";
 import { TYPES } from "../../../shared-kernal/ioc/types";
-import { ClientErrorsStatusCodes } from "../http-status-codes/ClientErrorsStatusCodes";
+import { ClientErrorsStatusCodes } from "../../../shared-kernal/http-status-codes/ClientErrorsStatusCodes";
 @injectable()
 export class RegisterUserMiddleware implements IMiddleware<Request, Response> {
 

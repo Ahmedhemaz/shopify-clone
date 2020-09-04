@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import { RegisterUserMiddleware } from './middlewares/registerUserMiddleware';
 import { myContainer } from '../../shared-kernal/ioc/inversify.config.ts';
 import { TYPES } from '../../shared-kernal/ioc/types';
