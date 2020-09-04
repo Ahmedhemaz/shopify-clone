@@ -4,6 +4,7 @@ import { IRequestBodyValidator } from "../validators/request-body-validators/IRe
 import { UserDto } from "../Dto/UserDto";
 import { inject, injectable } from "inversify";
 import { TYPES } from "../../../shared-kernal/ioc/types";
+import { ClientErrorsStatusCodes } from "../http-status-codes/ClientErrorsStatusCodes";
 @injectable()
 export class RegisterUserMiddleware implements IMiddleware<Request, Response> {
 
@@ -21,9 +22,7 @@ export class RegisterUserMiddleware implements IMiddleware<Request, Response> {
             // if valid call next()
             next();
         } catch (error) {
-            // if not return error with it's status code 
-            console.log(error.message);
-            
+            res.status(ClientErrorsStatusCodes.BAD_REQUEST).send({message: error.message})
         }
     }
 }
