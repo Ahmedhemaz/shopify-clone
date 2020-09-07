@@ -116,7 +116,7 @@ export class User extends Entity {
             return this;
         }
 
-        public setUniqueId(uId: string): UserBuilder{
+        public setUniqueId(uId?: string): UserBuilder{
             this.uId = new UniqueEntityId(uId);
             return this;
         }

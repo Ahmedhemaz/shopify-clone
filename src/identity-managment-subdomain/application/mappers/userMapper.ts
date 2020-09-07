@@ -3,16 +3,18 @@ import { User } from "../../domain/user.entity";
 import { UserDto } from "../Dto/UserDto";
 import { FullNameDto } from "../Dto/FullNameDto";
 import { AddressDto } from "../Dto/AddressDto";
-
+import { injectable } from "inversify";
+@injectable()
 export class UserMapper implements IDtoMapper<User, UserDto> {
-    mapDtoToDomainModel(userDto: UserDto): User {
+    mapDtoToDomainModel(userDto: UserDto): User {        
         return new User.userBuilder()
                     .setName(userDto.fullName.firstName, userDto.fullName.lastName)
                     .setAddress( userDto.address.country, userDto.address.city,
                                  userDto.address.street, userDto.address.postalCode)
                     .setEmail(userDto.email)
-                    .setMobile(userDto.password)
+                    .setMobile(userDto.mobile)
                     .setPassword(userDto.password)
+                    .setUniqueId()
                     .build();
 
     }

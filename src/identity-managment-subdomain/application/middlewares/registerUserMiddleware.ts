@@ -4,14 +4,14 @@ import { Request, Response } from 'express';
 import { IRequestBodyValidator } from "../validators/request-body-validators/IRequestBodyValidator";
 import { UserDto } from "../Dto/UserDto";
 import { inject, injectable } from "inversify";
-import { TYPES } from "../../../shared-kernal/ioc/types";
 import { ClientErrorsStatusCodes } from "../../../shared-kernal/http-status-codes/ClientErrorsStatusCodes";
+import { SERVICES } from '../container/types';
 @injectable()
 export class RegisterUserMiddleware implements IMiddleware<Request, Response> {
 
     private registerUserRequestBodyValidator: IRequestBodyValidator<UserDto>;
     public constructor(
-        @inject(TYPES.IRequestBodyValidator) registerUserRequestBodyValidator: IRequestBodyValidator<UserDto>
+        @inject(SERVICES.IRequestBodyValidator) registerUserRequestBodyValidator: IRequestBodyValidator<UserDto>
         ) {
         this.registerUserRequestBodyValidator = registerUserRequestBodyValidator;        
     }

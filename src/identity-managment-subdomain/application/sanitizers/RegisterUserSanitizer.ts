@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { ISanitizer } from "./ISanitizer";
 import { UserDto } from "../Dto/UserDto";
 import escape from 'validator/lib/escape';
