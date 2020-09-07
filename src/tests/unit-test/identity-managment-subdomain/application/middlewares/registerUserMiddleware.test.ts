@@ -2,7 +2,7 @@ import { RegisterUserMiddleware } from "../../../../../identity-managment-subdom
 import { RegisterUserRequestBodyValidatorMock } from "../../../__mocks__/identity-managment-subdomain-mocks/application/validators/request-body-validators/RegisterUserRequestBodyValidatorMock"
 import { Request, Response } from "express";
 import { UserDtoMock } from "../../../__mocks__/identity-managment-subdomain-mocks/application/Dto/UserDtoMock";
-import { ErrorMessages } from "../../../../../identity-managment-subdomain/domain/errors/customErrorMessagesEnum";
+import { RegisterUserSanitizer } from "../../../../../identity-managment-subdomain/application/sanitizers/RegisterUserSanitizer";
 
 describe('RegiserUserMiddleware tests', ()=>{
     const registerUserRequestBodyValidatorMock: RegisterUserRequestBodyValidatorMock = new RegisterUserRequestBodyValidatorMock();
@@ -13,8 +13,9 @@ describe('RegiserUserMiddleware tests', ()=>{
     res.send = jest.fn().mockReturnValue(res);
     res.status = jest.fn().mockReturnValue(res);
     
-    it('should call next hock', ()=>{
+    it('should call next hook', ()=>{
         registerUserMiddleware.execute(req,res,next);
+        (new RegisterUserSanitizer()).sanitize(req.body)
         expect(next).toHaveBeenCalled();
     });
 

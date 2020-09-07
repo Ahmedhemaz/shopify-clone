@@ -20,6 +20,8 @@ import { RegisterUserRequestBodyValidator } from "../../identity-managment-subdo
 import { IMiddleware } from "../../identity-managment-subdomain/application/middlewares/IMiddleware";
 import { Request, Response } from "express";
 import { RegisterUserMiddleware } from "../../identity-managment-subdomain/application/middlewares/registerUserMiddleware";
+import { ISanitizer } from "../../identity-managment-subdomain/application/sanitizers/ISanitizer";
+import { RegisterUserSanitizer } from "../../identity-managment-subdomain/application/sanitizers/RegisterUserSanitizer";
  
 const myContainer = new Container();
 myContainer.bind<IDbConnectionOptions>(TYPES.IDbConnectionOptions).to(DbConnectionOptions);
@@ -29,5 +31,6 @@ myContainer.bind<IAuthenticationService>(TYPES.IAuthenticationService).to(Authen
 myContainer.bind<IUserRepository>(TYPES.IUserRepository).to(UserRepository);
 myContainer.bind<IDataModelMapper<User,UserDataModel>>(TYPES.IDataModelMapper).to(UserDataMapper);
 myContainer.bind<IMiddleware<Request, Response>>(TYPES.IMiddleware).to(RegisterUserMiddleware);
-myContainer.bind<IRequestBodyValidator<UserDto>>(TYPES.RegisterUserRequestBodyValidator).to(RegisterUserRequestBodyValidator)
+myContainer.bind<IRequestBodyValidator<UserDto>>(TYPES.IRequestBodyValidator).to(RegisterUserRequestBodyValidator);
+myContainer.bind<ISanitizer<UserDto>>(TYPES.ISanitizer).to(RegisterUserSanitizer);
 export { myContainer };

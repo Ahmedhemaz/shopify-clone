@@ -10,7 +10,7 @@ export class UserDtoMock implements UserDto {
     public address: AddressDtoMock;
 
     constructor() {
-        this.fullName = new FullNameDtoMock('firstNameMock', 'lastNameMock');
+        this.fullName = new FullNameDtoMock('               firstNameMock', 'lastNameMock');
         this.address = new AddressDtoMock('CountryMock', 'CityMock', 'streetMock', '21551');
         this.password = '@1Qadfgv';
         this.email = 'mock@mock.com';

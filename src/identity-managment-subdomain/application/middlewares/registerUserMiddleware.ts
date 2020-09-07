@@ -11,7 +11,7 @@ export class RegisterUserMiddleware implements IMiddleware<Request, Response> {
 
     private registerUserRequestBodyValidator: IRequestBodyValidator<UserDto>;
     public constructor(
-        @inject(TYPES.RegisterUserRequestBodyValidator) registerUserRequestBodyValidator: IRequestBodyValidator<UserDto>
+        @inject(TYPES.IRequestBodyValidator) registerUserRequestBodyValidator: IRequestBodyValidator<UserDto>
         ) {
         this.registerUserRequestBodyValidator = registerUserRequestBodyValidator;        
     }

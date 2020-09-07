@@ -10,7 +10,7 @@ export class UserMapper implements IDtoMapper<User, UserDto> {
                     .setName(userDto.fullName.firstName, userDto.fullName.lastName)
                     .setAddress( userDto.address.country, userDto.address.city,
                                  userDto.address.street, userDto.address.postalCode)
-                    .setEmail(userDto.emaill)
+                    .setEmail(userDto.email)
                     .setMobile(userDto.password)
                     .setPassword(userDto.password)
                     .build();
@@ -20,7 +20,7 @@ export class UserMapper implements IDtoMapper<User, UserDto> {
         let userDto: UserDto ;
         userDto.fullName = this.mapDomainModelFullNameToDtoFullName(userDomainModel);
         userDto.address = this.mapDomainModelAddressToDtoAddress(userDomainModel);
-        userDto.emaill = userDomainModel.getEmailAddress().getEmail();
+        userDto.email = userDomainModel.getEmailAddress().getEmail();
         userDto.mobile = userDomainModel.getMobile().getNumber();
         return 
     }
