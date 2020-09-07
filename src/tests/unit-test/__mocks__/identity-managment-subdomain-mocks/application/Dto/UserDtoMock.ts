@@ -22,6 +22,11 @@ export class UserDtoMock implements UserDto {
         return this;
     }
 
+    public getUserDtoWithUnSanitizedFirstName() {
+        this.fullName.firstName = "<>/'";
+        return this;
+    }
+
     public getUserDtoWithEmptyLastName() {
         this.fullName.lastName = ' ';
         return this;
