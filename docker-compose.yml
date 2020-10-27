@@ -1,37 +1,45 @@
-version: '3'
-services: 
+version: "3"
+services:
     db:
-        image:  mysql:latest
-        expose: 
+        image: mysql:latest
+        expose:
             - "3306"
         ports:
             - "3307:3306"
-        env_file: 
+        env_file:
             - ./.env.development
-        volumes: 
+        volumes:
             - db_data:/var/lib/mysql
         container_name: shopify-clone-db
+    redis:
+        image: redis:alpine
+        ports:
+            - "6379:6379"
+        expose:
+            - "6379"
+        restart: "on-failure"
+        container_name: shopify-clone-redis
     api:
-        build: 
+        build:
             dockerfile: Dockerfile.dev
             context: ./
-        volumes: 
+        volumes:
             - ./nodemon.json:/usr/app/nodemon.json
             - ./:/usr/app/
             - /usr/app/node_modules
-            - /usr/app/dist 
+            - /usr/app/dist
             - /usr/app/coverage
-        env_file: 
+        env_file:
             - ./.env.development
         environment:
             - NODE_ENV=development
-        depends_on: 
+        depends_on:
             - db
-        expose: 
+        expose:
             - "3000"
-        ports: 
+        ports:
             - "3000:3000"
             - "9229:9229"
         container_name: shopify-clone-api
-volumes: 
+volumes:
     db_data: {}

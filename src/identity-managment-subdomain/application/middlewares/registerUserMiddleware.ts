@@ -5,15 +5,15 @@ import { IRequestBodyValidator } from "../validators/request-body-validators/IRe
 import { UserDto } from "../Dto/UserDto";
 import { inject, injectable } from "inversify";
 import { ClientErrorsStatusCodes } from "../../../shared-kernal/http-status-codes/ClientErrorsStatusCodes";
-import { SERVICES } from '../container/types';
+import { TYPES } from '../../../shared-kernal/ioc/types';
 @injectable()
 export class RegisterUserMiddleware implements IMiddleware<Request, Response> {
 
     private registerUserRequestBodyValidator: IRequestBodyValidator<UserDto>;
     public constructor(
-        @inject(SERVICES.IRequestBodyValidator) registerUserRequestBodyValidator: IRequestBodyValidator<UserDto>
-        ) {
-        this.registerUserRequestBodyValidator = registerUserRequestBodyValidator;        
+        @inject(TYPES.IRequestBodyValidator) registerUserRequestBodyValidator: IRequestBodyValidator<UserDto>
+    ) {
+        this.registerUserRequestBodyValidator = registerUserRequestBodyValidator;
     }
 
     execute = (req: Request, res: Response, next: any) => {
@@ -22,7 +22,7 @@ export class RegisterUserMiddleware implements IMiddleware<Request, Response> {
             (this.registerUserRequestBodyValidator).isRequestBodyValid(req.body);
             next();
         } catch (error) {
-            res.status(ClientErrorsStatusCodes.BAD_REQUEST).send({message: error.message})
+            res.status(ClientErrorsStatusCodes.BAD_REQUEST).send({ message: error.message })
         }
     }
 }
