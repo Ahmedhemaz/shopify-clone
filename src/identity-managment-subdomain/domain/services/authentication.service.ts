@@ -9,21 +9,21 @@ import { Password } from '../value-objects/password.valueObject';
 import { UserDataModel } from '../../infrastructrue/persistance/models/UserDataModel';
 
 @injectable()
-export class AuthenticationService implements IAuthenticationService{
+export class AuthenticationService implements IAuthenticationService {
     private hashService: IHashService;
     private userRepository: IUserRepository;
     constructor(
-        @inject(TYPES.IHashService) hashService:IHashService,
-        @inject(TYPES.IUserRepository) userRepository: IUserRepository){
+        @inject(TYPES.IHashService) hashService: IHashService,
+        @inject(TYPES.IUserRepository) userRepository: IUserRepository) {
         this.hashService = hashService;
         this.userRepository = userRepository;
     }
-    public async authenticate(mailAddress: string, password: string): Promise<boolean>{
+    public async authenticate(mailAddress: string, password: string): Promise<boolean> {
         const user: UserDataModel = this.userRepository.findUserOfMail(new Email(mailAddress));
         return await this.isCorrectPassword(new Password(password), user.hashedPassword);
     }
 
-    public async isCorrectPassword(password: Password, hashedPassword:string): Promise<boolean> {
+    private async isCorrectPassword(password: Password, hashedPassword: string): Promise<boolean> {
         return await this.hashService.compareHash(password.getPassword(), hashedPassword);
     }
 }

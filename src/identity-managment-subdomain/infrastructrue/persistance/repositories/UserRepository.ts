@@ -7,7 +7,7 @@ import { UserDataModel } from "../models/UserDataModel"
 @injectable()
 export class UserRepository implements IUserRepository {
 
-    findUserOfMail(mail: Email): UserDataModel{
+    findUserOfMail(mail: Email): UserDataModel {
         // query to find user with his mail
         return // return queried user data
     }
@@ -16,11 +16,11 @@ export class UserRepository implements IUserRepository {
         return
     }
 
-    create(usesr: UserDataModel): void{
+    create(usesr: UserDataModel): void {
         return
     }
 
-    update(user: UserDataModel): void{
+    update(user: UserDataModel): void {
 
     }
 }
