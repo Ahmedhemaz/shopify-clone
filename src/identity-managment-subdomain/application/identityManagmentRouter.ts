@@ -7,9 +7,12 @@ import { myContainer } from '../../shared-kernal/ioc/inversify.config.ts';
 const identityRouter = express.Router();
 
 identityRouter.post('/api/v1/register',
-    [(myContainer.get<RegisterUserMiddleware>(TYPES.IMiddleware)).execute,
-    (myContainer.get<RegisterUserSanitizer>(TYPES.ISanitizer)).sanitize
-    ], (myContainer.get<RegisterUserController>(TYPES.RegisterUserController).create))
+    [
+        (myContainer.get<RegisterUserMiddleware>(TYPES.IMiddleware)).execute,
+        (myContainer.get<RegisterUserSanitizer>(TYPES.ISanitizer)).sanitize,
+    ],
+    (myContainer.get<RegisterUserController>(TYPES.RegisterUserController).create)
+);
 
 
 export default identityRouter;

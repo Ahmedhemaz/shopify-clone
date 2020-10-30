@@ -1,9 +1,9 @@
 import { IUserRepository } from "../../interfaces/IUserRepository"
 import { Email } from "../../../domain/value-objects/email.valueObject"
 import { UniqueEntityId } from "../../../domain/value-objects/UniqueEntityId.valueObject"
-import { User } from "../../../domain/user.entity"
 import { injectable } from "inversify"
 import { UserDataModel } from "../models/UserDataModel"
+import { getConnection, getManager } from 'typeorm';
 @injectable()
 export class UserRepository implements IUserRepository {
 
@@ -16,8 +16,13 @@ export class UserRepository implements IUserRepository {
         return
     }
 
-    create(usesr: UserDataModel): void {
-        return
+    async create(user: UserDataModel): Promise<void> {
+        await getConnection()
+            .createQueryBuilder()
+            .insert()
+            .into(UserDataModel)
+            .values(user)
+            .execute();
     }
 
     update(user: UserDataModel): void {

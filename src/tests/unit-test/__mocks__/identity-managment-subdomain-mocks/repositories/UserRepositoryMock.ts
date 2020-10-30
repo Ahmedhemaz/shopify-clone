@@ -6,11 +6,11 @@ import { UserDataModel } from "../../../../../identity-managment-subdomain/infra
 export class UserRepositoryMock implements IUserRepository {
 
     private mockedUserData: UserDataModel;
-    constructor(){
-        this.mockedUserData =  new UserDataModel()
+    constructor() {
+        this.mockedUserData = new UserDataModel()
     }
     findUserOfMail(mail: Email): UserDataModel {
-       return this.mockedUserData;
+        return this.mockedUserData;
     }
     findUserOfId(userId: UniqueEntityId): UserDataModel {
         throw new Error("Method not implemented.");
@@ -21,5 +21,5 @@ export class UserRepositoryMock implements IUserRepository {
     update(user: UserDataModel): void {
         throw new Error("Method not implemented.");
     }
-    
+
 }

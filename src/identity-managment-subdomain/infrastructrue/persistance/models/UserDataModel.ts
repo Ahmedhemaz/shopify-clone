@@ -1,8 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, VersionColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
-import { AddressDataModel } from "./AddressDataModel";
-import { FullNameDataModel } from "./FullNameDataModel";
+import { Entity, Column, VersionColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
 
-@Entity()
+@Entity({ name: 'users' })
 export class UserDataModel {
     @Column({
         primary: true,
@@ -14,9 +12,11 @@ export class UserDataModel {
     @VersionColumn()
     version: number;
 
+    @Column({ name: 'first_name', nullable: false })
+    firstName: string;
 
-    @Column(type => FullNameDataModel)
-    name: FullNameDataModel;
+    @Column({ name: 'last_name', nullable: false })
+    lastName: string;
 
     @Column({
         nullable: false
@@ -24,12 +24,34 @@ export class UserDataModel {
     email: string;
 
     @Column({
+        name: 'mobile_number',
         nullable: false
     })
     mobileNumber: string;
 
-    @Column(type => AddressDataModel)
-    address: AddressDataModel;
+    @Column({
+        name: 'country',
+        nullable: false
+    })
+    country: string;
+
+    @Column({
+        name: 'city',
+        nullable: false
+    })
+    city: string;
+
+    @Column({
+        name: 'street',
+        nullable: false
+    })
+    street: string;
+
+    @Column({
+        name: 'postal_code',
+        nullable: false
+    })
+    postalCode: string;
 
     @Column({
         nullable: false

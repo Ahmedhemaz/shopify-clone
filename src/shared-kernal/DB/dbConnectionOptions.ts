@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import { injectable } from "inversify";
 import { IDbConnectionOptions } from "../interfaces/IDbConnectionOptions";
+import { UserDataModel } from '../../identity-managment-subdomain/infrastructrue/persistance/models/UserDataModel';
 
 @injectable()
 export class DbConnectionOptions implements IDbConnectionOptions {
@@ -14,6 +15,7 @@ export class DbConnectionOptions implements IDbConnectionOptions {
             username: process.env.USERNAME,
             password: process.env.PASSWORD,
             database: process.env.DATABASENAME,
+            entities: [UserDataModel] //todo craete entities array for all project in separate file 
         }
     };
 

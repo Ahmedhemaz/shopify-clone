@@ -17,16 +17,16 @@ export class ChangePasswordService implements IChangePasswordService {
     private userRepository: IUserRepository;
     private userDataMapper: IDataModelMapper<User, UserDataModel>;
     constructor(
-        @inject(TYPES.IHashService) hashingService:IHashService,
+        @inject(TYPES.IHashService) hashingService: IHashService,
         @inject(TYPES.IUserRepository) userRepository: IUserRepository,
-        @inject(TYPES.IDataModelMapper) userDataMapper: IDataModelMapper<User,UserDataModel>){
-            this.hashingService = hashingService
-            this.userRepository = userRepository;
-            this.userDataMapper = userDataMapper;
-        }
+        @inject(TYPES.IDataModelMapper) userDataMapper: IDataModelMapper<User, UserDataModel>) {
+        this.hashingService = hashingService
+        this.userRepository = userRepository;
+        this.userDataMapper = userDataMapper;
+    }
 
     isSameOldPassword(oldPassword: string, newPassword: string): boolean {
-        if(this.hashingService.compareHash(newPassword, oldPassword)){
+        if (this.hashingService.compareHash(newPassword, oldPassword)) {
             throw new SameOldPasswordException(ErrorMessages.NEW_PASSWORD_SAME_AS_OLD_PASSWORD);
         }
         return false;
@@ -34,10 +34,10 @@ export class ChangePasswordService implements IChangePasswordService {
 
     changePassword(mailAddress: string, newPassword: string): void {
         const user: UserDataModel = this.userRepository.findUserOfMail(new Email(mailAddress));
-        if(!this.isSameOldPassword(newPassword, user.hashedPassword)){
+        if (!this.isSameOldPassword(newPassword, user.hashedPassword)) {
             const userDomainModel: User = this.userDataMapper.mapDataModelToDomainModel(user);
             userDomainModel.changePassword(newPassword);
-            userDomainModel.getUserEventEmitter().getEventEmitter().on('PasswordChanged', ()=>{/** todo password changed action */})
+            userDomainModel.getUserEventEmitter().getEventEmitter().on('PasswordChanged', () => {/** todo password changed action */ })
         }
     }
 

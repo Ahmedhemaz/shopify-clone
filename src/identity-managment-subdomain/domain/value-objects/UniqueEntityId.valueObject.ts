@@ -7,12 +7,12 @@ import isUUID from 'validator/lib/isUUID';
 export class UniqueEntityId implements IValueObject<UniqueEntityId> {
 
     private uniqueIdentity: string;
-    constructor(uniqueIdentity?: string){
-        if(uniqueIdentity){
+    constructor(uniqueIdentity?: string) {
+        if (uniqueIdentity) {
             this.setUniqueIdentity(uniqueIdentity);
-        }else {
+        } else {
             this.setUniqueIdentityWithRandomUUID();
-        }  
+        }
         Object.freeze(this);
     }
 
@@ -24,12 +24,12 @@ export class UniqueEntityId implements IValueObject<UniqueEntityId> {
         return this.uniqueIdentity
     }
 
-    private setUniqueIdentity(anUniqueIdentity: string){
-        if(!isUUID(anUniqueIdentity, '4')) throw new InvalidUniqueIdentityException(ErrorMessages.INVALID_UUID_V4);
+    private setUniqueIdentity(anUniqueIdentity: string) {
+        if (!isUUID(anUniqueIdentity, '4')) throw new InvalidUniqueIdentityException(ErrorMessages.INVALID_UUID_V4);
         this.uniqueIdentity = anUniqueIdentity;
     }
 
-    private setUniqueIdentityWithRandomUUID(){
+    private setUniqueIdentityWithRandomUUID() {
         this.uniqueIdentity = uuidv4();
     }
 
