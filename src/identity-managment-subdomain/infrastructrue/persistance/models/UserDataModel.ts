@@ -4,11 +4,8 @@ import { FullNameDataModel } from "./FullNameDataModel";
 
 @Entity()
 export class UserDataModel {
-
-    @PrimaryGeneratedColumn()
-    id: number;
-
     @Column({
+        primary: true,
         type: "uuid",
         unique: true
     })
@@ -18,25 +15,36 @@ export class UserDataModel {
     version: number;
 
 
-    @Column(type=> FullNameDataModel)
+    @Column(type => FullNameDataModel)
     name: FullNameDataModel;
 
-    @Column()
+    @Column({
+        nullable: false
+    })
     email: string;
 
-    @Column()
+    @Column({
+        nullable: false
+    })
     mobileNumber: string;
 
     @Column(type => AddressDataModel)
     address: AddressDataModel;
 
-    @Column()
+    @Column({
+        nullable: false
+    })
     hashedPassword: string;
 
-    @CreateDateColumn({name: 'created_at'})
+    @Column({
+        default: false
+    })
+    verified: boolean
+
+    @CreateDateColumn({ name: 'created_at' })
     createdAt: Date;
 
-    @UpdateDateColumn({name: 'updated_at'})
+    @UpdateDateColumn({ name: 'updated_at' })
     updatedAt: Date;
 
 }

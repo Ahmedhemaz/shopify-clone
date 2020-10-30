@@ -2,3 +2,4 @@
 .cache
 *.md
 node_modules
+dist

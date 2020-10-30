@@ -41,5 +41,7 @@ services:
             - "3000:3000"
             - "9229:9229"
         container_name: shopify-clone-api
+        entrypoint: ./entrypoint.sh
+        command: /usr/app/entrypoint.sh
 volumes:
     db_data: {}

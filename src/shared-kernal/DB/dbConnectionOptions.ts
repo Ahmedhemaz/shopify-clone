@@ -3,12 +3,12 @@ import { injectable } from "inversify";
 import { IDbConnectionOptions } from "../interfaces/IDbConnectionOptions";
 
 @injectable()
-export class DbConnectionOptions implements IDbConnectionOptions{
-    
+export class DbConnectionOptions implements IDbConnectionOptions {
+
     readonly connectionOptions: any;
-    constructor(){
+    constructor() {
         this.connectionOptions = {
-            type: 'mysql',
+            type: process.env.TYPE,
             host: process.env.HOST,
             port: +process.env.PORT,
             username: process.env.USERNAME,
