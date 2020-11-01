@@ -1,3 +1,3 @@
 export interface IDomainEvent {
-    occurredOn(): void;
+    occurredOn(): string;
 }

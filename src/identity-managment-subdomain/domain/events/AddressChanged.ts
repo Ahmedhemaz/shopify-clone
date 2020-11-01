@@ -4,19 +4,19 @@ import { IDomainEvent } from "../../../shared-kernal/interfaces/IDomainEvent";
 import { UniqueEntityId } from "../value-objects/UniqueEntityId.valueObject";
 import { Address } from '../value-objects/address.valueObject';
 
-export class AddressChanged implements IDomainEvent{
-    private date: string;
-    private userId: UniqueEntityId;
-    private address: Address;
-    constructor(userId: string, address: Address){
+export class AddressChanged implements IDomainEvent {
+    private readonly date: string;
+    private readonly userId: UniqueEntityId;
+    private readonly address: Address;
+    constructor(userId: string, address: Address) {
         this.occurredOn();
         this.userId = new UniqueEntityId(userId);
         this.address = address;
     }
-    occurredOn(): void {
-        this.date = date.format(new Date(), 'DD/MM/YYYY HH:mm:ss');
+    occurredOn(): string {
+        return date.format(new Date(), 'DD/MM/YYYY HH:mm:ss');
     }
-    public getOccurrenceDate(): string{
+    public getOccurrenceDate(): string {
         return this.date;
     }
     public getUserId(): UniqueEntityId {
@@ -25,5 +25,5 @@ export class AddressChanged implements IDomainEvent{
     public getAddress(): Address {
         return this.address;
     }
-    
+
 }
