@@ -18,6 +18,8 @@ services:
         expose:
             - "6379"
         restart: "on-failure"
+        volumes:
+            - redis_data:/var/lib/redos
         container_name: shopify-clone-redis
     api:
         build:
@@ -35,6 +37,7 @@ services:
             - NODE_ENV=development
         depends_on:
             - db
+            - redis
         expose:
             - "3000"
         ports:
@@ -45,3 +48,4 @@ services:
         command: /usr/app/entrypoint.sh
 volumes:
     db_data: {}
+    redis_data: {}

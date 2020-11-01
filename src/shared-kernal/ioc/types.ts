@@ -2,7 +2,9 @@
 const TYPES = {
     IDataModelMapper: Symbol.for("IDataModelMapper<User, UserDataModel>"),
     IDbConnectionOptions: Symbol.for("IDbConnectionOptions"),
+    IConnectionOptions: Symbol.for("IConnectionOptions"),
     IDbHandler: Symbol.for("IDbHandler"),
+    IConnectionHandler: Symbol.for("IConnectionHandler"),
     UniqueEntityId: Symbol.for("UniqueEntityId"),
     IHashService: Symbol.for("IHashService"),
     IAuthenticationService: Symbol.for("IAuthenticationService"),

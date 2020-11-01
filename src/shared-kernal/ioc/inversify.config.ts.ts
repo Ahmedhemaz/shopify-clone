@@ -25,12 +25,19 @@ import { RegisterUserSanitizer } from "../../identity-managment-subdomain/applic
 import { IRequestBodyValidator } from "../../identity-managment-subdomain/application/validators/request-body-validators/IRequestBodyValidator";
 import { RegisterUserRequestBodyValidator } from "../../identity-managment-subdomain/application/validators/request-body-validators/RegisterUserRequestBodyValidator";
 import { IDtoMapper } from "../interfaces/IDtoMapper";
+import { IConnectionOptions } from "../interfaces/IConnectionOptions";
+import { RedisConnectionOptions } from "../Redis/RedisConnectionOptions";
+import { IConnectionHandler } from "../interfaces/IConnectionHandler";
+import { RedisClient } from "redis";
+import { RedisConnectionHandler } from "../Redis/RedisHandler";
 
 
 const myContainer = new Container();
 myContainer.bind<IDataModelMapper<User, UserDataModel>>(TYPES.IDataModelMapper).to(UserDataMapper);
 myContainer.bind<IDbConnectionOptions>(TYPES.IDbConnectionOptions).to(DbConnectionOptions);
+myContainer.bind<IConnectionOptions>(TYPES.IConnectionOptions).to(RedisConnectionOptions);
 myContainer.bind<IDbHandler>(TYPES.IDbHandler).to(DBHandler);
+myContainer.bind<IConnectionHandler<RedisClient>>(TYPES.IConnectionHandler).to(RedisConnectionHandler);
 myContainer.bind<IHashService>(TYPES.IHashService).to(HashingService);
 myContainer.bind<IAuthenticationService>(TYPES.IAuthenticationService).to(AuthenticationService);
 myContainer.bind<IUserRepository>(TYPES.IUserRepository).to(UserRepository);
