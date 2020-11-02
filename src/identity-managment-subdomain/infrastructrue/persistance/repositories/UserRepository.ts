@@ -3,7 +3,9 @@ import { Email } from "../../../domain/value-objects/email.valueObject"
 import { UniqueEntityId } from "../../../domain/value-objects/UniqueEntityId.valueObject"
 import { injectable } from "inversify"
 import { UserDataModel } from "../models/UserDataModel"
-import { getConnection, getManager } from 'typeorm';
+import { getConnection } from 'typeorm';
+import { publisher } from '../../../../app';
+import { UserCreated } from "../events/UserCreated"
 @injectable()
 export class UserRepository implements IUserRepository {
 
@@ -17,12 +19,22 @@ export class UserRepository implements IUserRepository {
     }
 
     async create(user: UserDataModel): Promise<void> {
-        await getConnection()
-            .createQueryBuilder()
-            .insert()
-            .into(UserDataModel)
-            .values(user)
-            .execute();
+        try {
+            await getConnection()
+                .createQueryBuilder()
+                .insert()
+                .into(UserDataModel)
+                .values(user)
+                .execute();
+
+            publisher.getConnectionObject()
+                .publish("[USER-CREATED]", JSON.stringify(new UserCreated(user).getCreatedUser()));
+
+        } catch (error) {
+            console.log(error);
+
+        }
+
     }
 
     update(user: UserDataModel): void {

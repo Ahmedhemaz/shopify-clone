@@ -7,6 +7,7 @@ import { TYPES } from "../../../shared-kernal/ioc/types";
 import { IDataModelMapper } from "../../../shared-kernal/interfaces/IDataModelMapper";
 import { UserDataModel } from "../../infrastructrue/persistance/models/UserDataModel";
 import { IUserRepository } from "../../infrastructrue/interfaces/IUserRepository";
+import { subscriber } from '../../../app';
 @injectable()
 export class RegisterUserController {
     private userDtoMapper: IDtoMapper<User, UserDto>;
@@ -28,14 +29,21 @@ export class RegisterUserController {
         try {
 
             this.userRepository.create(userDataModel);
+
+            subscriber.getConnectionObject().subscribe("[USER-CREATED]")
+            subscriber.getConnectionObject().on("message", (channel, message) => {
+                // save created event in event store DB
+                // create confirmation link 
+                // send it via email
+                console.log("Recieved Data:" + message);
+
+            })
         } catch (error) {
             console.log(error);
-
         }
         // create user repository
         // presist user data
-        // emit registered event
-        // send confirmation mail
+        // on account created send confirmation mail
 
     }
 
