@@ -6,7 +6,7 @@ import { UserDto } from "../Dto/UserDto";
 import { TYPES } from "../../../shared-kernal/ioc/types";
 import { IDataModelMapper } from "../../../shared-kernal/interfaces/IDataModelMapper";
 import { UserDataModel } from "../../infrastructrue/persistance/models/UserDataModel";
-import { IUserRepository } from "../../infrastructrue/interfaces/IUserRepository";
+import { IUserRepository } from "../../infrastructrue/persistance/interfaces/IUserRepository";
 import { subscriber } from '../../../app';
 @injectable()
 export class RegisterUserController {

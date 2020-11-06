@@ -1,4 +1,4 @@
-import { IUserRepository } from "../../interfaces/IUserRepository"
+import { IUserRepository } from "../interfaces/IUserRepository"
 import { Email } from "../../../domain/value-objects/email.valueObject"
 import { UniqueEntityId } from "../../../domain/value-objects/UniqueEntityId.valueObject"
 import { injectable } from "inversify"

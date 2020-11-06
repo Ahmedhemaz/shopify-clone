@@ -4,7 +4,7 @@ import { TYPES } from "../../../shared-kernal/ioc/types";
 import { IHashService } from "../interfaces/services/hashService.interface";
 import { SameOldPasswordException } from "./exceptions/sameOldPassword.exception";
 import { ErrorMessages } from "../errors/customErrorMessagesEnum";
-import { IUserRepository } from "../../infrastructrue/interfaces/IUserRepository";
+import { IUserRepository } from "../../infrastructrue/persistance/interfaces/IUserRepository";
 import { Email } from "../value-objects/email.valueObject";
 import { UserDataModel } from "../../infrastructrue/persistance/models/UserDataModel";
 import { IDataModelMapper } from "../../../shared-kernal/interfaces/IDataModelMapper";

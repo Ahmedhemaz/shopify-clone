@@ -3,7 +3,7 @@ import { IAuthenticationService } from "../interfaces/services/authenticationSer
 import { IHashService } from "../interfaces/services/hashService.interface";
 import { inject, injectable } from "inversify";
 import { TYPES } from "../../../shared-kernal/ioc/types";
-import { IUserRepository } from '../../infrastructrue/interfaces/IUserRepository';
+import { IUserRepository } from '../../infrastructrue/persistance/interfaces/IUserRepository';
 import { Email } from '../value-objects/email.valueObject';
 import { Password } from '../value-objects/password.valueObject';
 import { UserDataModel } from '../../infrastructrue/persistance/models/UserDataModel';

@@ -8,7 +8,7 @@ import { IHashService } from "../../identity-managment-subdomain/domain/interfac
 import { HashingService } from "../../identity-managment-subdomain/domain/services/hashing.service";
 import { IAuthenticationService } from "../../identity-managment-subdomain/domain/interfaces/services/authenticationService.interface";
 import { AuthenticationService } from "../../identity-managment-subdomain/domain/services/authentication.service";
-import { IUserRepository } from "../../identity-managment-subdomain/infrastructrue/interfaces/IUserRepository";
+import { IUserRepository } from "../../identity-managment-subdomain/infrastructrue/persistance/interfaces/IUserRepository";
 import { UserRepository } from "../../identity-managment-subdomain/infrastructrue/persistance/repositories/UserRepository";
 import { IDataModelMapper } from "../interfaces/IDataModelMapper";
 import { UserDataMapper } from "../../identity-managment-subdomain/domain/mappers/user.mapper";

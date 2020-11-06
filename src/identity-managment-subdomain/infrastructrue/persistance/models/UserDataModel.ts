@@ -1,4 +1,4 @@
-import { Entity, Column, VersionColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Entity, Column, VersionColumn, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn } from "typeorm";
 
 @Entity({ name: 'users' })
 export class UserDataModel {

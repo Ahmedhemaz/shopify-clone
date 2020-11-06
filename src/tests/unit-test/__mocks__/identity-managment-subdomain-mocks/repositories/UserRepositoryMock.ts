@@ -1,4 +1,4 @@
-import { IUserRepository } from "../../../../../identity-managment-subdomain/infrastructrue/interfaces/IUserRepository";
+import { IUserRepository } from "../../../../../identity-managment-subdomain/infrastructrue/persistance/interfaces/IUserRepository";
 import { Email } from "../../../../../identity-managment-subdomain/domain/value-objects/email.valueObject";
 import { UniqueEntityId } from "../../../../../identity-managment-subdomain/domain/value-objects/UniqueEntityId.valueObject";
 import { UserDataModel } from "../../../../../identity-managment-subdomain/infrastructrue/persistance/models/UserDataModel";
