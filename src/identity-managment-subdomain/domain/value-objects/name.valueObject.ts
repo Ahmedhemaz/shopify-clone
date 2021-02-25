@@ -8,13 +8,10 @@ export class FullName implements IValueObject<FullName> {
     private readonly lastName: string;
 
     constructor(firstName: string, lastName: string) {
-        firstName.trim();
-        lastName.trim();
-        if (isEmpty(firstName, { ignore_whitespace: true })) throw new EmptyStringException(ErrorMessages.EMPTY_FIRST_NAME);
-        if (isEmpty(lastName, { ignore_whitespace: true })) throw new EmptyStringException(ErrorMessages.EMPTY_LAST_NAME);
-
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.firstName = firstName.trim();
+        this.lastName = lastName.trim();
+        if (isEmpty(this.firstName, { ignore_whitespace: true })) throw new EmptyStringException(ErrorMessages.EMPTY_FIRST_NAME);
+        if (isEmpty(this.lastName, { ignore_whitespace: true })) throw new EmptyStringException(ErrorMessages.EMPTY_LAST_NAME);
     }
 
     public equals(fullName: FullName): boolean {
