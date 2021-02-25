@@ -52,8 +52,7 @@
     "validator": "^13.1.1"
   },
   "jest": {
-    "testResultsProcessor": "jest-sonar-reporter",
-    "collectCoverage": true
+    "testResultsProcessor": "jest-sonar-reporter"
   },
   "jestSonar": {
     "reportPath": "./reports",
