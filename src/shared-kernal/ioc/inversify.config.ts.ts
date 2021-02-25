@@ -30,6 +30,10 @@ import { RedisConnectionOptions } from "../Redis/RedisConnectionOptions";
 import { IConnectionHandler } from "../interfaces/IConnectionHandler";
 import { RedisClient } from "redis";
 import { RedisConnectionHandler } from "../Redis/RedisHandler";
+import { ITokenGenerator } from "../interfaces/ITokenGenerator";
+import { TokenGenerator } from "../TokenGenerator/TokenGenerator";
+import { IVerificationTokenRepository } from "../../identity-managment-subdomain/infrastructrue/persistance/interfaces/IVerificationTokenRepository";
+import { VerificationTokenRepository } from "../../identity-managment-subdomain/infrastructrue/persistance/repositories/VerificationTokenRepoistory";
 
 
 const myContainer = new Container();
@@ -46,5 +50,7 @@ myContainer.bind<RegisterUserController>(TYPES.RegisterUserController).to(Regist
 myContainer.bind<IMiddleware<Request, Response>>(TYPES.IMiddleware).to(RegisterUserMiddleware);
 myContainer.bind<IRequestBodyValidator<UserDto>>(TYPES.IRequestBodyValidator).to(RegisterUserRequestBodyValidator);
 myContainer.bind<ISanitizer<UserDto>>(TYPES.ISanitizer).to(RegisterUserSanitizer);
+myContainer.bind<ITokenGenerator>(TYPES.ITokenGenerator).to(TokenGenerator);
+myContainer.bind<IVerificationTokenRepository>(TYPES.IVerificationTokenRepository).to(VerificationTokenRepository);
 
 export { myContainer };

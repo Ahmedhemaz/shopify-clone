@@ -6,7 +6,7 @@ import { UserDataModel } from "./UserDataModel";
 export class VerificationTokenModel {
 
     @PrimaryGeneratedColumn()
-    id: number
+    id?: number
 
     @Column({
         name: 'token'
@@ -19,6 +19,6 @@ export class VerificationTokenModel {
     expireDate: Date;
 
     @OneToOne(() => UserDataModel)
-    @JoinColumn({ name: 'email' })
-    userEmail: UserDataModel;
+    @JoinColumn({ name: 'user_email' })
+    user_email: string;
 }

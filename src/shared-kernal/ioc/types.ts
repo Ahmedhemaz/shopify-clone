@@ -14,6 +14,8 @@ const TYPES = {
     IRequestBodyValidator: Symbol.for("IRequestBodyValidator<RequestBodyType>"),
     ISanitizer: Symbol.for("ISanitizer<T>"),
     IMiddleware: Symbol.for("IMiddleware"),
+    ITokenGenerator: Symbol.for("ITokenGenerator"),
+    IVerificationTokenRepository: Symbol.for("IVerificationTokenRepository"),
 };
 
 export { TYPES };

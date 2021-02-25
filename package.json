@@ -30,6 +30,7 @@
     "@types/uuid": "^8.0.0",
     "@types/validator": "^13.0.0",
     "jest": "^26.0.0",
+    "jest-sonar-reporter": "^2.0.0",
     "nodemon": "^2.0.4",
     "ts-jest": "^26.0.0",
     "ts-node": "^8.10.1",
@@ -43,10 +44,20 @@
     "express": "^4.17.1",
     "inversify": "^5.0.1",
     "mysql2": "^2.1.0",
+    "nanoid": "^3.1.16",
     "redis": "^3.0.2",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.24",
     "uuid": "^8.2.0",
     "validator": "^13.1.1"
+  },
+  "jest": {
+    "testResultsProcessor": "jest-sonar-reporter",
+    "collectCoverage": true
+  },
+  "jestSonar": {
+    "reportPath": "./reports",
+    "reportFile": "test-reporter.xml",
+    "indent": 4
   }
 }

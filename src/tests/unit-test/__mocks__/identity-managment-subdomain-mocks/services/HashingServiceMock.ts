@@ -4,11 +4,11 @@ export class HashingServiceMock implements IHashService {
 
     private mockedHashedPassword: string;
 
-    constructor (mockedHashedPassword: string){
+    constructor(mockedHashedPassword: string) {
         this.mockedHashedPassword = mockedHashedPassword;
     }
     hashPassword(plainText: string): Promise<string> {
-        return new Promise<string>(resolve =>{
+        return new Promise<string>(resolve => {
             return resolve(this.mockedHashedPassword);
         })
     }
@@ -17,5 +17,5 @@ export class HashingServiceMock implements IHashService {
             return resolve(true)
         });
     }
-    
+
 }
