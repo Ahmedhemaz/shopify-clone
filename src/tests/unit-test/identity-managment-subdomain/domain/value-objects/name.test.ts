@@ -35,7 +35,7 @@ describe('FullName ValueObject tests', () => {
 
     it('should return firstName space lastName', () => {
         const fullName: FullName = new FullName(validFirstName, validLastName);
-        expect(fullName.getFullName()).toStrictEqual(`${validFirstName} ${validLastName}`);
+        expect(fullName.getFullName()).toStrictEqual(`${validFirstName.trim()} ${validLastName.trim()}`);
     });
 
 })
