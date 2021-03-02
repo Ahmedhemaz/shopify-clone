@@ -31,10 +31,18 @@ jobs:
           -Dsonar.pullrequest.github.repository=${{ github.repository }} \
           -Dsonar.qualitygate.wait=true \
           -Dsonar.scm.provider=git
-  unit-test-code:
+  build-project:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - uses: mattallty/jest-github-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Use Node.js 14.15.4
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.15.4"
+      - run: npm ci
+      - run: npm run build --if-present
+  unit-test-code:
+    needs: build-project
+    runs-on: ubuntu-20.04
+    steps:
+      - run: npm test
