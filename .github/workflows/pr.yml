@@ -28,7 +28,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: code-coverage-report-info
-          path: shopify-clone/test/lcov.info
+          path: output/coverage/lcov.info
   sonar-qube-pr-analysis:
     needs: unit-test-code
     runs-on: ubuntu-20.04
