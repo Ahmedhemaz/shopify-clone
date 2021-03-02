@@ -43,7 +43,7 @@ jobs:
           path: ./reports/
       - name: Display structure of downloaded files
         run: ls -R
-        working-directory: ./reports/
+        working-directory: ./
       # - name: RUN SONARQUBE PR
       #   run: |
       #     docker run \
