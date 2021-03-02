@@ -45,4 +45,9 @@ jobs:
     needs: build-project
     runs-on: ubuntu-20.04
     steps:
+      - name: Use Node.js 14.15.4
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.15.4"
+      - run: npm ci
       - run: npm test
