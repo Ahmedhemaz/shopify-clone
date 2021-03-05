@@ -44,11 +44,15 @@ jobs:
         with:
           name: code-coverage-report-info
           path: ./reports/
-      - uses: cardinalby/google-api-fetch-token-action@v1
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@master
         with:
-          clientId: ${{ secrets.G_API_CLIENT_ID }}
-          clientSecret: ${{ secrets.G_API_CLIENT_SECRET }}
-          refreshToken: ${{ secrets.G_API_REFRESH_TOKEN }}
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          service_account_email: ${{secrets.GCP_SERVICE_ACCOUNT_EMAIL}}
+          export_default_credentials: true
+      - name: Use gcloud CLI
+        run: gcloud info
       - name: RUN SONARQUBE PR
         run: |
           docker run \
