@@ -5,8 +5,8 @@
     "username": "username",
     "password": "password",
     "database": "database",
-    "migrations": ["Migrations Dirs to be executed"],
+    "migrations": ["./dist/infrastructrue/DB/migrations/*.js"],
     "cli": {
-        "migrationsDir": "Migration dir path "
+        "migrationsDir": "./src/infrastructrue/DB/migrations"
     }
 }

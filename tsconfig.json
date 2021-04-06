@@ -8,6 +8,7 @@
       "outDir": "dist",
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
+      "lib": ["es2015"],
+      "types": ["reflect-metadata", "jest", "node"],
     },
-    "lib": ["es2015"],
   }
